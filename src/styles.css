@@ -1,0 +1,120 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* html, body { height: 100%; } */
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif !important; }
+
+body {
+    /* background: #f1f3f6; */
+    /* background: #f0f4fe; */
+    background: #f8f9fa !important;
+}
+
+.bg-dark {
+    background: #3a444e !important;
+}
+
+.card {
+    border: none;
+    background-color: #3a444e;
+    /* box-shadow: 0 0 35px 0 rgba(154,161,171,.15); */
+}
+
+.content .mat-card {
+    padding: .6rem .8rem;
+    /* box-shadow: 0 0 35px 0 rgba(154,161,171,.15); */
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3);
+    border: 1px solid #eaeef5;
+}
+
+.nav-item a {
+    color:#000;
+}
+
+.nav-pills .nav-link {
+    border-radius: 0;
+}
+
+.nav-pills {
+    background-color: lightgrey;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: orange;
+    background-color: #3a444e;
+}
+
+.fs-14 {
+    font-size: 14px
+}
+
+.chart-widget-list {
+    margin-top: 20px;
+}
+
+.logout-icon {
+    width: 140px;
+}
+
+.btn-dark {
+    background: #3a444e;
+    border-color: #3a444e;
+    color: orange !important;
+    text-align: left;
+    position: relative;
+    border-radius: 0 !important;
+}
+
+.btn-dark:hover, .btn-dark:focus {
+    background-color: #33393f;
+    border-color: #33393f;
+}
+
+.btn-outline-orange {
+    color: orange;
+    border-color: orange;
+}
+
+.btn-outline-orange:hover {
+    color: #fff;
+    background-color: orange;
+    border-color: orange;
+}
+
+.text-orange {
+    color: orange !important;
+}
+
+/* .dropdown-toggle:after {
+    position: absolute;
+    right: 12px;
+    top: 16px;
+} */
+
+.custom-gutters {
+    margin-right: -7.5px !important;
+    margin-left: -7.5px !important;
+}
+.custom-gutters > .col, .custom-gutters > [class*="col-"] {
+    padding-right: 7.5px !important;
+    padding-left: 7.5px !important;
+}
+
+.mat-tab-header {
+    margin-bottom: 16px;
+}
+
+.mat-tab-label {
+    background: lightgrey;
+    opacity: 1 !important;
+    transition: 500ms cubic-bezier(0.35, 0, 0.25, 1);
+}
+
+.mat-tab-label-active {
+    background-color: #3a444e;
+    color: orange;
+}
+
+.mat-ink-bar {
+    height: 3px !important;
+    background-color: orange !important;
+}

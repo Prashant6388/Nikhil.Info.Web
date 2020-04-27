@@ -1,0 +1,198 @@
+<div class="content mt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-4">
+                <mat-card style="padding: 0;">
+                    <mat-card-content>
+                        <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
+                            <mat-tab label="Sign Up">
+                                <div class="text-center w-75 m-auto">
+                                    <h5 class="text-dark-50 text-center mt-0">Sign Up</h5>
+                                    <p class="text-muted mb-4 fs-14">Don't have an account? Create your account, it
+                                        takes less than a minute </p>
+                                </div>
+                                <form action="#" style="padding: 0 1.25rem 1.25rem;">
+
+                                    <div class="form-group">
+                                        <label for="fullname">Full Name</label>
+                                        <input class="form-control" type="text" id="fullname"
+                                            placeholder="Enter your name" required="">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="emailaddress">Email address</label>
+                                        <input class="form-control" type="email" id="emailaddress" required=""
+                                            placeholder="Enter your email">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input class="form-control" type="password" required="" id="password"
+                                            placeholder="Enter your password">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="checkbox-signup">
+                                            <label class="custom-control-label" for="checkbox-signup">I accept <a
+                                                    href="#" class="text-muted">Terms and Conditions</a></label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-0 text-center">
+                                        <button class="btn btn-dark w-100 text-center" type="submit"> GET STARTED
+                                        </button>
+                                    </div>
+
+                                </form>
+                            </mat-tab>
+
+                            <mat-tab label="Log In">
+                                <div class="text-center w-75 m-auto">
+                                    <h5 class="text-dark-50 text-center mt-0">Log In</h5>
+                                    <p class="text-muted mb-4 fs-14">Enter your email address and password to
+                                        access.</p>
+                                </div>
+
+                                <form action="#" style="padding: 0 1.25rem 1.25rem;">
+                                    <div class="form-group">
+                                        <label for="emailaddress">Email address</label>
+                                        <input class="form-control" type="email" id="emailaddress" required=""
+                                            placeholder="Enter your email">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <a href="reset-password.html" class="text-muted float-right"><small>Forgot
+                                                your
+                                                password?</small></a>
+                                        <label for="password">Password</label>
+                                        <input class="form-control" type="password" required="" id="password"
+                                            placeholder="Enter your password">
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="checkbox-signin"
+                                                checked="">
+                                            <label class="custom-control-label" for="checkbox-signin">Remember
+                                                me</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-0 text-center">
+                                        <a href="dashboard.html" class="btn btn-dark w-100 text-center"
+                                            type="submit">LOG IN</a>
+                                        <!-- <button class="btn btn-dark w-100 text-center" type="submit"> LOG IN
+                                        </button> -->
+                                    </div>
+
+                                </form>
+                            </mat-tab>
+                        </mat-tab-group>
+
+                        <!-- <ul class="nav nav-pills nav-fill mb-3" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="signup-tab" data-toggle="tab" href="#signup" role="tab"
+                                    aria-controls="signup" aria-selected="true">Sign Up</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="login-tab" data-toggle="tab" href="#login" role="tab"
+                                    aria-controls="login" aria-selected="false">Login</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="signup" role="tabpanel"
+                                aria-labelledby="signup-tab">
+
+                                <div class="text-center w-75 m-auto">
+                                    <h5 class="text-dark-50 text-center mt-0">Sign Up</h5>
+                                    <p class="text-muted mb-4 fs-14">Don't have an account? Create your account, it
+                                        takes less than a minute </p>
+                                </div>
+
+                                <form action="#">
+
+                                    <div class="form-group">
+                                        <label for="fullname">Full Name</label>
+                                        <input class="form-control" type="text" id="fullname"
+                                            placeholder="Enter your name" required="">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="emailaddress">Email address</label>
+                                        <input class="form-control" type="email" id="emailaddress" required=""
+                                            placeholder="Enter your email">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input class="form-control" type="password" required="" id="password"
+                                            placeholder="Enter your password">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="checkbox-signup">
+                                            <label class="custom-control-label" for="checkbox-signup">I accept <a
+                                                    href="#" class="text-muted">Terms and Conditions</a></label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-0 text-center">
+                                        <button class="btn btn-dark w-100 text-center" type="submit"> GET STARTED
+                                        </button>
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="login" role="tabpanel" aria-labelledby="login-tab">
+
+                                <div class="text-center w-75 m-auto">
+                                    <h5 class="text-dark-50 text-center mt-0">Log In</h5>
+                                    <p class="text-muted mb-4 fs-14">Enter your email address and password to
+                                        access.</p>
+                                </div>
+
+                                <form action="#">
+
+                                    <div class="form-group">
+                                        <label for="emailaddress">Email address</label>
+                                        <input class="form-control" type="email" id="emailaddress" required=""
+                                            placeholder="Enter your email">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <a href="reset-password.html" class="text-muted float-right"><small>Forgot
+                                                your
+                                                password?</small></a>
+                                        <label for="password">Password</label>
+                                        <input class="form-control" type="password" required="" id="password"
+                                            placeholder="Enter your password">
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="checkbox-signin"
+                                                checked="">
+                                            <label class="custom-control-label" for="checkbox-signin">Remember
+                                                me</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-0 text-center">
+                                        <a href="dashboard.html" class="btn btn-dark w-100 text-center"
+                                            type="submit">LOG IN</a>
+                                         <button class="btn btn-dark w-100 text-center" type="submit"> LOG IN
+                                            </button> 
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div> -->
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+    <!-- end container -->
+</div>
