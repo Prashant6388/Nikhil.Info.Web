@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomHttpService } from '../services/custom-http.service';
 
 @Component({
   selector: 'app-app-sec',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppSecComponent implements OnInit {
 
-  constructor() { }
+  appsecurity = [];
+  constructor(private customHttpService: CustomHttpService) { }
 
   ngOnInit(): void {
+    this.customHttpService.getapplicationsecurity().subscribe(response => {
+      this.appsecurity = response;
+    });
   }
 
 }

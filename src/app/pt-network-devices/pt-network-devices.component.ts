@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomHttpService } from '../services/custom-http.service';
 
 @Component({
   selector: 'app-pt-network-devices',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PtNetworkDevicesComponent implements OnInit {
 
-  constructor() { }
+  ptnetworkservice = [];
+  constructor(private customHttpService: CustomHttpService) { }
 
   ngOnInit(): void {
+    this.customHttpService.getptnetworkservices().subscribe(response => {
+      this.ptnetworkservice = response;
+    });
   }
 
 }

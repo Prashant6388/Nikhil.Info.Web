@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomHttpService } from '../services/custom-http.service';
 
 @Component({
   selector: 'app-asset-search',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssetSearchComponent implements OnInit {
 
-  constructor() { }
+  assets = [];
+  constructor(
+    private customHttpService: CustomHttpService
+  ) { }
 
   ngOnInit(): void {
+    this.customHttpService.getassets().subscribe(response => {
+      this.assets = response;
+    });
   }
 
 }

@@ -1,7 +1,7 @@
-<button class="btn btn-dark my-1 w-100 text-left" type="button">
+<button class="btn btn-dark my-1 w-100 text-left" type="button" (click)="navigate('dashboard')" >
   Dashboard
 </button>
-<button class="btn btn-dark my-1 w-100 text-left" type="button">
+<button class="btn btn-dark my-1 w-100 text-left" type="button" (click)="navigate('asset-search')">
   Asset Search
 </button>
 <button class="btn btn-dark dropdown-toggle my-1 w-100 text-left" type="button" data-toggle="collapse"
@@ -10,14 +10,14 @@
 </button>
 <div class="collapse" id="collapseExample">
   <div class="card card-body bg-dark text-light py-0 border-0 text-left">
-    <p>VA of servers</p>
-    <p>PT of Network Devices</p>
-    <p>App Sec Testing</p>
+    <a href="" (click)="!!navigate('va-servers')">VA of servers</a>
+    <a href="" (click)="!!navigate('pt-network-devices')">PT of Network Devices</a>
+    <a href="" (click)="!!navigate('app-sec')">App Sec Testing</a>
   </div>
 </div>
-<button class="btn btn-dark my-1 w-100 text-left" type="button">
+<button class="btn btn-dark my-1 w-100 text-left" type="button" (click)="navigate('user-access')">
   Access Add/Create/Delete
 </button>
-<button class="btn btn-dark my-1 w-100 text-left" type="button">
+<button class="btn btn-dark my-1 w-100 text-left" type="button" (click)="navigate('contact-us')">
   Contact Us
 </button>

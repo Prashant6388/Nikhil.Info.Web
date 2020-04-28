@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomHttpService } from '../services/custom-http.service';
 
 @Component({
   selector: 'app-va-servers',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VaServersComponent implements OnInit {
 
-  constructor() { }
+  vaservers = [];
+  constructor(private customHttpService: CustomHttpService) { }
 
   ngOnInit(): void {
+    this.customHttpService.getvaservers().subscribe(response => {
+      this.vaservers = response;
+    });
   }
-
 }
