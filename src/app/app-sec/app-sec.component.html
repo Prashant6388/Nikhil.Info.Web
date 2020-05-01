@@ -8,8 +8,9 @@
     <div class="col-md-12">
         <div class="ep" style="background: #f1f3fa; padding: 12px 15px 1px; border-radius: 4px;">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search specific data like hostname, operating system, ip address, admin user, softwares, etc." aria-label="Recipient's username"
-                    aria-describedby="button-addon2">
+                <input type="text" class="form-control"
+                    placeholder="Search specific data like hostname, operating system, ip address, admin user, softwares, etc."
+                    aria-label="Recipient's username" aria-describedby="button-addon2" [(ngModel)]="searchCriteria">
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2" style="padding: 0 8px;
                     border-color: #ced4da;">
@@ -23,39 +24,7 @@
 </div>
 
 <div class="row custom-gutters my-3">
-    <div class="col-md-5">
-        <mat-card>
-            <mat-card-subtitle>
-                Application Security
-            </mat-card-subtitle>
-            <mat-card-content>
-                <div class="media">
-                    <img src="assets/images/piechart.png" class="align-self-center mr-3" alt="...">
-                    <div class="media-body">
-                        <div class="chart-widget-list">
-                            <p class="fs-14 mb-0">
-                                <i class="mdi mdi-square text-primary"></i> Anti-Malware
-                                <span class="float-right">300</span>
-                            </p>
-                            <p class="fs-14 mb-0">
-                                <i class="mdi mdi-square text-danger"></i> SCMM
-                                <span class="float-right">135</span>
-                            </p>
-                            <p class="fs-14 mb-0">
-                                <i class="mdi mdi-square text-success"></i> Encryption
-                                <span class="float-right">50</span>
-                            </p>
-                            <p class="fs-14 mb-0">
-                                <i class="mdi mdi-square text-warning"></i> E-mail
-                                <span class="float-right">155</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </mat-card-content>
-        </mat-card>
-    </div>
-    <div class="col-md-7">
+    <div class="col-md-12">
         <mat-card class="pb-0">
             <!-- <mat-card-subtitle>
                 Encryption
@@ -65,79 +34,28 @@
                     <thead class="thead-light">
                         <tr>
                             <th scope="col" style="width: 13%;">Sr. No.</th>
-                            <th scope="col">Company</th>
-                            <th scope="col">Contact</th>
-                            <th scope="col">Country</th>
+                            <th scope="col">Application</th>
+                            <th scope="col">Vulnerability</th>
+                            <th scope="col">Severity</th>
+                            <th scope="col">Severity1</th>
+                            <th scope="col">Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
+                        <tr *ngFor="let item of getAppSecuritySearch(); let i= index">
+                            <th scope="row">{{ (pageEvent.pageIndex * pageEvent.pageSize) + i + 1}}</th>
+                            <td>{{item.application}}</td>
+                            <td>{{item.vulnerability}}</td>
+                            <td>{{item.severity}}</td>
+                            <td>{{item.severity1}}</td>
+                            <td>{{item.status}}</td>
                         </tr>
                     </tbody>
                 </table>
-                <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+                <mat-paginator [length]="length" [pageSize]="pageEvent.pageSize" [pageSizeOptions]="pageSizeOptions"
+                    (page)="pageChanged($event)">
                 </mat-paginator>
             </mat-card-content>
         </mat-card>
     </div>
 </div>
-
-

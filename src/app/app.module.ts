@@ -21,7 +21,8 @@ import { AppSecComponent } from './app-sec/app-sec.component';
 import { UserAccessComponent } from './user-access/user-access.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-
+import { FormsModule } from '@angular/forms';
+import { ExportAsModule } from 'ngx-export-as';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatTabsModule,
     MatIconModule,
     MatPaginatorModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ExportAsModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }
