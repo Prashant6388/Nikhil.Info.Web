@@ -23,6 +23,9 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ExportAsModule } from 'ngx-export-as';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +51,8 @@ import { ExportAsModule } from 'ngx-export-as';
     MatPaginatorModule,
     HttpClientModule,
     FormsModule,
+    MatMenuModule,
+    MatButtonModule,
     ExportAsModule
   ],
   providers: [

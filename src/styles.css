@@ -118,3 +118,32 @@ body {
     height: 3px !important;
     background-color: orange !important;
 }
+
+.mat-menu-content:not(:empty) {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+}
+
+.mat-menu-item {
+    line-height: 36px !important;
+    height: 36px !important;
+    padding: 0 8px !important;
+}
+
+button:focus {
+    outline: none !important;
+}
+
+.form-control:focus {
+    box-shadow: none !important;
+}
+
+.btn-outline-secondary.focus, .btn-outline-secondary:focus {
+    box-shadow: none !important;
+}
+
+.table .thead-light th {
+    color: #343a40;
+    font-size: 12px;
+}
+
