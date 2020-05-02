@@ -147,3 +147,13 @@ button:focus {
     font-size: 12px;
 }
 
+.drop a {
+    color: #fff;
+    padding: 4px 0;
+}
+
+.drop a:hover {
+    color: orange;
+    text-decoration: none;
+}
+
