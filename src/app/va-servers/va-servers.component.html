@@ -75,5 +75,30 @@
         </mat-card>
     </div>
 </div>
-
+<table class="table table-hover table-bordered mb-0" style="display: none;" id="excel-table">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col" style="width: 13%;">Sr. No.</th>
+            <th scope="col">Data Center</th>		
+            <th scope="col">Host Name</th>
+            <th scope="col">IP Address</th>
+            <th scope="col">Vulnerability</th>
+            <th scope="col">Severity</th>
+            <th scope="col">Severity1</th>
+            <th scope="col">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of getAppSecurityPrint(); let i= index">
+            <th scope="row"> {{ i + 1}}</th>
+            <td>{{item.datacenter}}</td>
+            <td>{{item.hostname}}</td>                            
+            <td>{{item.ipAddress}}</td>
+            <td>{{item.vulnerability}}</td>
+            <td>{{item.severity}}</td>
+            <td>{{item.severity1}}</td>
+            <td>{{item.status}}</td>
+        </tr>
+    </tbody>
+</table>
 
