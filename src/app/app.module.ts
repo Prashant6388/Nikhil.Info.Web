@@ -60,16 +60,14 @@ import { UserAccessDialogComponent } from './user-access-dialog/user-access-dial
     MatMenuModule,
     MatButtonModule,
     MatDialogModule,
-    MatDialogModule
     ExportAsModule
   ],
   entryComponents: [
-    EndpointDialogComponent, UserAccessDialogComponent
+    EndpointDialogComponent, UserAccessDialogComponent, UserAccessFormComponent
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
-  entryComponents: [UserAccessFormComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

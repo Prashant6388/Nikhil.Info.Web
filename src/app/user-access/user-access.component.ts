@@ -59,7 +59,7 @@ export class UserAccessComponent implements OnInit {
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(UserAccessFormComponent, {
-      width: '250px',
+      width: '400px',
       data: {}
     });
 

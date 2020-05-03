@@ -14,8 +14,8 @@ export class EndpointDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // onNoClick(): void {
-  //   this.dialogRef.close();
-  // }
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 
 }

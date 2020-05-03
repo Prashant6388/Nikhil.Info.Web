@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(EndpointDialogComponent, {
-      width: '250px',   
+      width: '400px',   
     });
 
     dialogRef.afterClosed().subscribe(result => {
