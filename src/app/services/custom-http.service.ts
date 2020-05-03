@@ -20,4 +20,7 @@ export class CustomHttpService {
   getapplicationsecurity() {
     return this.http.get<any>(environment.url + 'api/inventory/getapplicationsecurity');
   }
+  getusers() {
+    return this.http.get<any>(environment.url + 'api/inventory/getusers');
+  }
 }

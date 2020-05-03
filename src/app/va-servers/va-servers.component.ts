@@ -89,7 +89,7 @@ export class VaServersComponent implements OnInit {
       });
     }
     else if (type === 'Html') {
-      
+
     }
 
 
@@ -115,7 +115,7 @@ export class VaServersComponent implements OnInit {
     printString += '<tbody>';
 
     let i = 1;
-    this.getAppSecurityPrint().forEach(item => {
+    this.getVaServerPrint().forEach(item => {
 
       if (i % 21 === 0) {
         printString += '<tr class="header" style="border:none"> <td colspan="8"></td></tr>';
@@ -140,7 +140,7 @@ export class VaServersComponent implements OnInit {
     printString += '</div>';
     return printString;
   }
-  getAppSecurityPrint() {
+  getVaServerPrint() {
 
     const searchVAservers = this.vaservers
       .filter(item =>
