@@ -25,6 +25,9 @@ import { FormsModule } from '@angular/forms';
 import { ExportAsModule } from 'ngx-export-as';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { EndpointDialogComponent } from './endpoint-dialog/endpoint-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { UserAccessDialogComponent } from './user-access-dialog/user-access-dialog.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,9 @@ import { MatButtonModule } from '@angular/material/button';
     VaServersComponent,
     PtNetworkDevicesComponent,
     AppSecComponent,
-    UserAccessComponent
+    UserAccessComponent,
+    EndpointDialogComponent,
+    UserAccessDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +58,11 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     MatMenuModule,
     MatButtonModule,
+    MatDialogModule,
     ExportAsModule
+  ],
+  entryComponents: [
+    EndpointDialogComponent, UserAccessDialogComponent
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }
