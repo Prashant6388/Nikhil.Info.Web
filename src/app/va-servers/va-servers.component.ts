@@ -64,41 +64,45 @@ export class VaServersComponent implements OnInit {
     this.pageEvent = event;
   }
   download(type: string) {
-    const exportAsConfig: ExportAsConfig = {
-      type: 'pdf',
-      elementIdOrContent: this.getPrintData(), // the id of html/table element
-      options: {
-        jsPDF: {
-          orientation: 'potrait'
-        },
-        margin: {
-          top: '10',
-          bottom: '10'
-        },
-        pdfCallbackFn: this.pdfCallbackFn
-      }
-    };
-    this.exportAsService.save(exportAsConfig, 'va-server-detail').subscribe(() => {
-      // save started
-    });
+    let exportAsConfig: ExportAsConfig = null;
+    if (type === 'PDF') {
+      const marginArray = [10, 0, 10, 0];
+      exportAsConfig = {
+        type: 'pdf',
+        elementIdOrContent: this.getPrintData(),
+        options: {
+          margin: marginArray,
+          pagebreak: { before: '.header' },
+        }
+      };
+      this.exportAsService.save(exportAsConfig, 'va-server-detail').subscribe(() => {
+        // save started
+      });
+    }
+    else if (type === 'Excel') {
+      exportAsConfig = {
+        type: 'xlsx',
+        elementIdOrContent: 'excel-table',
+      };
+      this.exportAsService.save(exportAsConfig, 'va-server-detail').subscribe(() => {
+        // save started
+      });
+    }
+    else if (type === 'Html') {
+
+    }
+
+
   }
 
-  pdfCallbackFn(pdf: any) {
-    // example to add page number as footer to every page of pdf
-    const noOfPages = pdf.internal.getNumberOfPages();
-    for (let i = 1; i <= noOfPages; i++) {
-      pdf.setPage(i);
-      pdf.text('Page ' + i + ' of ' + noOfPages, pdf.internal.pageSize.getWidth() - 100, pdf.internal.pageSize.getHeight() - 30);
-      // pdf.img('')
-    }
-  }
   getPrintData() {
     let printString = '';
-    printString += '<div style="width:750px;font-size:12px;padding:20px" >';
+    printString += '<div style="width:770px;font-size:12px;margin-bottom:30px;padding-top:20px;padding-bottom:20px;padding-left:20px;padding-right:20px" >';
+    printString += '<h5 align="center" style="padding:10px"> VA Server Details </h5>';
     printString += '<table class="table table-hover table-bordered mb-0">';
     printString += '<thead class="thead-light">';
     printString += '<tr>';
-    printString += '<th scope="col" style="width: 13%;">Sr. No.</th>';
+    printString += '<th scope="col" style="width: 8%;">Sr. No.</th>';
     printString += '<th scope="col">Data Center</th>';
     printString += '<th scope="col">Host Name</th>';
     printString += '<th scope="col">IP Address</th>';
@@ -111,7 +115,11 @@ export class VaServersComponent implements OnInit {
     printString += '<tbody>';
 
     let i = 1;
-    this.getAppSecurityPrint().forEach(item => {
+    this.getVaServerPrint().forEach(item => {
+
+      if (i % 21 === 0) {
+        printString += '<tr class="header" style="border:none"> <td colspan="8"></td></tr>';
+      }
       printString += '<tr>';
       printString += '<th scope="row">' + i + '</th>';
       printString += '<td>' + item.datacenter + '</td>';
@@ -122,14 +130,17 @@ export class VaServersComponent implements OnInit {
       printString += '<td>' + item.severity1 + '</td>';
       printString += '<td>' + item.status + '</td>';
       printString += '</tr>';
+
       i = i + 1;
+
+
     });
     printString += '</tbody>';
     printString += '</table>';
     printString += '</div>';
     return printString;
   }
-  getAppSecurityPrint() {
+  getVaServerPrint() {
 
     const searchVAservers = this.vaservers
       .filter(item =>
