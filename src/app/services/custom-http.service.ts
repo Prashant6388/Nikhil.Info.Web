@@ -23,4 +23,7 @@ export class CustomHttpService {
   getusers() {
     return this.http.get<any>(environment.url + 'api/inventory/getusers');
   }
+  login(request) {
+    return this.http.post<any>(environment.url + 'api/inventory/login',request);
+  }
 }

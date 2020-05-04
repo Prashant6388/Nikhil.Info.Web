@@ -54,20 +54,22 @@
                                         access.</p>
                                 </div>
 
-                                <form action="#" style="padding: 0 1.25rem 1.25rem;">
+                                <form #loginForm="ngForm"  style="padding: 0 1.25rem 1.25rem;">
                                     <div class="form-group">
                                         <label for="emailaddress">Email address</label>
-                                        <input class="form-control" type="email" id="emailaddress" required=""
-                                            placeholder="Enter your email">
-                                    </div>
+                                        <input class="form-control" type="email" id="emailaddress" required name="email"
+                                            placeholder="Enter your email" [(ngModel)]="loginRequest.email" #email="ngModel">
+                                            <div class="m-1" *ngIf="email.errors && email.errors.required" style="color:red">Please Enter Email</div>                                    
+                                        </div>
 
                                     <div class="form-group">
                                         <a href="reset-password.html" class="text-muted float-right"><small>Forgot
                                                 your
                                                 password?</small></a>
                                         <label for="password">Password</label>
-                                        <input class="form-control" type="password" required="" id="password"
-                                            placeholder="Enter your password">
+                                        <input class="form-control" type="password" required id="password" #password="ngModel" name="password"
+                                            placeholder="Enter your password" [(ngModel)]="loginRequest.password">
+                                            <div class="m-1" *ngIf="password.errors && password.errors.required" style="color:red">Please Enter Password</div> 
                                     </div>
 
                                     <div class="form-group mb-3">
@@ -80,8 +82,8 @@
                                     </div>
 
                                     <div class="form-group mb-0 text-center">
-                                        <a href="dashboard.html" class="btn btn-dark w-100 text-center"
-                                            type="submit">LOG IN</a>
+                                        <a  class="btn btn-dark w-100 text-center"
+                                         (click)="login(loginForm)" >LOG IN</a>
                                         <!-- <button class="btn btn-dark w-100 text-center" type="submit"> LOG IN
                                         </button> -->
                                     </div>

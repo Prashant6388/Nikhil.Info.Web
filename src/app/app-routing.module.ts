@@ -40,10 +40,10 @@ const routes: Routes = [
     path: 'va-servers', component: VaServersComponent
   },
   {
-    path: '', redirectTo: '/dashboard', pathMatch: 'full'
+    path: '', redirectTo: '/login', pathMatch: 'full'
   },
   {
-    path: '**', component: DashboardComponent
+    path: '**', component: LoginComponent
   },
 ];
 
