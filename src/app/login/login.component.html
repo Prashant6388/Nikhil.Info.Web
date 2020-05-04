@@ -11,36 +11,43 @@
                                     <p class="text-muted mb-4 fs-14">Don't have an account? Create your account, it
                                         takes less than a minute </p>
                                 </div>
-                                <form action="#" style="padding: 0 1.25rem 1.25rem;">
+                                <form #signUpForm="ngForm" (ngSubmit)="signUp(signUpForm)" style="padding: 0 1.25rem 1.25rem;">
 
                                     <div class="form-group">
                                         <label for="fullname">Full Name</label>
-                                        <input class="form-control" type="text" id="fullname"
+                                        <input class="form-control"  name="fullname"  [(ngModel)]="signUpRequest.name" #name="ngModel"  type="text" id="fullname"
                                             placeholder="Enter your name" required="">
+                                            <div class="m-1" *ngIf="name.errors && name.errors.required" style="color:red">Please Enter Name</div>                                    
+                                        
                                     </div>
 
                                     <div class="form-group">
                                         <label for="emailaddress">Email address</label>
-                                        <input class="form-control" type="email" id="emailaddress" required=""
+                                        <input class="form-control" name="email" [(ngModel)]="signUpRequest.email" #email="ngModel" type="email" id="emailaddress" required=""
                                             placeholder="Enter your email">
+
+                                            <div class="m-1" *ngIf="email.errors && email.errors.required" style="color:red">Please Enter Email</div>                                    
+                                        
                                     </div>
 
                                     <div class="form-group">
                                         <label for="password">Password</label>
-                                        <input class="form-control" type="password" required="" id="password"
+                                        <input class="form-control" name="password" [(ngModel)]="signUpRequest.password" #password="ngModel"  type="password" required="" id="password"
                                             placeholder="Enter your password">
+
+                                            <div class="m-1" *ngIf="password.errors && password.errors.required" style="color:red">Please Enter Password</div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="checkbox-signup">
+                                            <input type="checkbox" name="TermsandConditions" [(ngModel)]="signUpRequest.acceptedTermAndCondition" class="custom-control-input" id="checkbox-signup">
                                             <label class="custom-control-label" for="checkbox-signup">I accept <a
                                                     href="#" class="text-muted">Terms and Conditions</a></label>
                                         </div>
                                     </div>
 
                                     <div class="form-group mb-0 text-center">
-                                        <button class="btn btn-dark w-100 text-center" type="submit"> GET STARTED
+                                        <button [disabled]="!signUpRequest.acceptedTermAndCondition" class="btn btn-dark w-100 text-center" type="submit"> GET STARTED
                                         </button>
                                     </div>
 
@@ -57,7 +64,7 @@
                                 <form #loginForm="ngForm"  style="padding: 0 1.25rem 1.25rem;">
                                     <div class="form-group">
                                         <label for="emailaddress">Email address</label>
-                                        <input class="form-control" type="email" id="emailaddress" required name="email"
+                                        <input class="form-control" name="email" type="email" id="emailaddress" required name="email"
                                             placeholder="Enter your email" [(ngModel)]="loginRequest.email" #email="ngModel">
                                             <div class="m-1" *ngIf="email.errors && email.errors.required" style="color:red">Please Enter Email</div>                                    
                                         </div>
@@ -67,7 +74,7 @@
                                                 your
                                                 password?</small></a>
                                         <label for="password">Password</label>
-                                        <input class="form-control" type="password" required id="password" #password="ngModel" name="password"
+                                        <input class="form-control" name="password" type="password" required id="password" #password="ngModel" name="password"
                                             placeholder="Enter your password" [(ngModel)]="loginRequest.password">
                                             <div class="m-1" *ngIf="password.errors && password.errors.required" style="color:red">Please Enter Password</div> 
                                     </div>

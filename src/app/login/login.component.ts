@@ -15,6 +15,15 @@ export class LoginComponent implements OnInit {
     {
       email: '',
       password: ''
+    };
+
+  signUpRequest =
+    {
+      name: '',
+      email: '',
+      password: '',
+      contactNo: '',
+      acceptedTermAndCondition :false
     }
   constructor(
     private customHttpService: CustomHttpService,
@@ -29,6 +38,14 @@ export class LoginComponent implements OnInit {
         this.storeService.loggedInUser = response;
         this.router.navigate(['/dashboard']);
       });
-    } 
+    }
+  }
+  signUp(form: NgForm) {
+    if (form.valid) {
+      this.customHttpService.postUser(this.signUpRequest).subscribe(response => {
+        // this.storeService.loggedInUser = response;
+        // this.router.navigate(['/dashboard']);
+      });
+    }
   }
 }

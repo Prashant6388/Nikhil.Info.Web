@@ -24,6 +24,10 @@ export class CustomHttpService {
     return this.http.get<any>(environment.url + 'api/inventory/getusers');
   }
   login(request) {
-    return this.http.post<any>(environment.url + 'api/inventory/login',request);
+    return this.http.post<any>(environment.url + 'api/inventory/login', request);
+
+  }
+  postUser(request) {
+    return this.http.post<any>(environment.url + 'api/inventory/postuser', request);
   }
 }
