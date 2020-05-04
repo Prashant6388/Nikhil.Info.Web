@@ -19,7 +19,7 @@ import { VaServersComponent } from './va-servers/va-servers.component';
 import { PtNetworkDevicesComponent } from './pt-network-devices/pt-network-devices.component';
 import { AppSecComponent } from './app-sec/app-sec.component';
 import { UserAccessComponent } from './user-access/user-access.component';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { LocationStrategy, HashLocationStrategy, CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ExportAsModule } from 'ngx-export-as';
@@ -45,7 +45,8 @@ import { UserAccessDialogComponent } from './user-access-dialog/user-access-dial
     AppSecComponent,
     UserAccessComponent,
     EndpointDialogComponent,
-    UserAccessDialogComponent
+    UserAccessDialogComponent,
+    UserAccessFormComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +61,9 @@ import { UserAccessDialogComponent } from './user-access-dialog/user-access-dial
     MatMenuModule,
     MatButtonModule,
     MatDialogModule,
-    ExportAsModule
+    ExportAsModule,
+    CommonModule
+    
   ],
   entryComponents: [
     EndpointDialogComponent, UserAccessDialogComponent, UserAccessFormComponent
