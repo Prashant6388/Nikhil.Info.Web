@@ -184,3 +184,24 @@ button:focus {
     font-size: 18px;
     cursor: pointer
 }
+
+.table-grid mat-card {
+    padding: 0 !important;
+    border: 0 !important;
+}
+
+.btn-action {
+    min-width: 44px !important;
+    padding: 0 !important;
+}
+
+.pdf-icon {
+    color: #f70d1a !important;
+}
+
+.excel-icon {
+    color: forestgreen !important;
+}
+.html-icon {
+    color: deepskyblue !important;
+}

@@ -25,6 +25,7 @@ import { FormsModule } from '@angular/forms';
 import { ExportAsModule } from 'ngx-export-as';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { UserAccessFormComponent } from './user-access-form/user-access-form.component';
 import { EndpointDialogComponent } from './endpoint-dialog/endpoint-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -62,6 +63,7 @@ import { UserAccessDialogComponent } from './user-access-dialog/user-access-dial
     MatButtonModule,
     MatDialogModule,
     ExportAsModule,
+    MatTooltipModule,
     CommonModule
     
   ],
