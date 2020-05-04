@@ -191,8 +191,14 @@ button:focus {
 }
 
 .btn-action {
-    min-width: 44px !important;
+    min-width: 46px !important;
     padding: 0 !important;
+    width: 100%;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
 }
 
 .pdf-icon {
@@ -202,6 +208,31 @@ button:focus {
 .excel-icon {
     color: forestgreen !important;
 }
+
 .html-icon {
     color: deepskyblue !important;
+}
+
+.custom-control-label {
+    padding-top: 2px;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+    border-color: orange !important;
+    background-color: orange !important;
+}
+
+.custom-control-input:focus:not(:checked)~.custom-control-label::before {
+    border-color: orange !important;
+}
+
+.custom-control-input:focus~.custom-control-label::before {
+    box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.4) !important;
+}
+
+.icon-action {
+    height: 20px !important;
+    font-size:18px;
+    vertical-align: middle;
+    cursor: pointer;
 }

@@ -6,7 +6,7 @@
 
 <div class="row my-3">
     <div class="col-md-12">
-        <div class="ep" style="background: #f1f3fa; padding: 15px; border-radius: 4px;">
+        <div class="epts">
             <div class="input-group">
                 <input type="text" class="form-control"
                     placeholder="Search specific data like hostname, operating system, ip address, admin user, softwares, etc."
@@ -23,7 +23,7 @@
     </div>
 </div>
 
-<div class="row custom-gutters my-3">
+<div class="row custom-gutters my-3 table-grid">
     <div class="col-md-12">
         <mat-card class="pb-0">
             <mat-card-content>
@@ -34,7 +34,7 @@
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
                             <th scope="col">Contact No</th>
-                            <th scope="col"></th>
+                            <th scope="col" style="width: 10%;"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,9 +43,13 @@
                             <td>{{item.name}}</td>
                             <td>{{item.email}}</td>
                             <td>{{item.contactNo}}</td>
-                            <td style="width:10%">
-                                <mat-icon class="m-1" (click)="openDialog()">create</mat-icon>
-                                <mat-icon class="m-1">clear</mat-icon>
+                            <td style="width: 10%; text-align: center; padding: 8px;">
+                                <button mat-button style="padding: 0; min-width: 32px; height: 32px; line-height: 32px;" class="mr-2">
+                                    <mat-icon class="icon-action" (click)="openDialog()">create</mat-icon>
+                                </button>
+                                <button mat-button color="warn" style="padding: 0; min-width: 32px; height: 32px; line-height: 32px;">
+                                    <mat-icon class="icon-action">clear</mat-icon>
+                                </button>
                             </td>
                         </tr>
                     </tbody>
