@@ -1,6 +1,7 @@
 <!-- <app-login></app-login> -->
 <!-- <app-reset-password></app-reset-password> -->
-
+<router-outlet *ngIf="!storeService.loggedInUser"></router-outlet> 
+<div *ngIf="storeService.loggedInUser">
 <app-header></app-header>
 
 <div class="container-fluid">
@@ -21,4 +22,4 @@
   </div>
 </div> 
 
-<!-- <router-outlet></router-outlet> -->
+</div>
