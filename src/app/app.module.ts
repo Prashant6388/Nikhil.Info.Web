@@ -46,7 +46,8 @@ import { UserAccessDialogComponent } from './user-access-dialog/user-access-dial
     AppSecComponent,
     UserAccessComponent,
     EndpointDialogComponent,
-    UserAccessDialogComponent
+    UserAccessDialogComponent,
+    UserAccessFormComponent
   ],
   imports: [
     BrowserModule,
