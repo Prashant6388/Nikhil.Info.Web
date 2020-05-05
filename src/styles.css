@@ -236,3 +236,16 @@ button:focus {
     vertical-align: middle;
     cursor: pointer;
 }
+
+.mat-menu-panel {
+    min-height: 44px !important;
+}
+
+.btn-secondary {
+    background: lightgrey !important;
+    color: rgba(0,0,0,.87) !important;
+}
+
+/* input:-internal-autofill-selected {
+    background-color: #f8f9fa !important;
+} */

@@ -28,7 +28,26 @@
           </li>-->
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <div class="dropdown">
+        <button mat-stroked-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
+                class="btn btn-dark btn-action" style="padding:0 16px !important;">
+                <mat-icon style="margin-top: -1px;">account_circle</mat-icon>
+                {{storeService.loggedInUser.name}}
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>
+                    <mat-icon>more_vert</mat-icon>
+                    <span>Action</span>
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>settings</mat-icon>
+                    <span>Settings</span>
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>settings_power</mat-icon>
+                    <span>Logout</span>
+                </button>
+            </mat-menu>
+        <!-- <div class="dropdown">
           <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             {{storeService.loggedInUser.name}}
@@ -38,7 +57,7 @@
             <a class="dropdown-item" href="#">Settings</a>
             <a class="dropdown-item" href="#">Logout</a>
           </div>
-        </div>
+        </div> -->
       </form>
     </div>
   </nav> 
