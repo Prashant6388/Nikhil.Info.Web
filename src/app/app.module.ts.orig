@@ -30,7 +30,7 @@ import { UserAccessFormComponent } from './user-access-form/user-access-form.com
 import { EndpointDialogComponent } from './endpoint-dialog/endpoint-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { UserAccessDialogComponent } from './user-access-dialog/user-access-dialog.component';
-import { NgCircleProgressModule } from 'ng-circle-progress';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,10 +62,14 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     MatMenuModule,
     MatButtonModule,
     MatDialogModule,
+<<<<<<< HEAD
     ExportAsModule,
+    CommonModule
+    
+=======
     MatTooltipModule,
-    CommonModule,
-    NgCircleProgressModule.forRoot({})    
+    ExportAsModule
+>>>>>>> 829865c93a60f4782ebc3d2f71e4b9776e78fc74
   ],
   entryComponents: [
     EndpointDialogComponent, UserAccessDialogComponent, UserAccessFormComponent

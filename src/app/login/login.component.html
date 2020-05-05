@@ -19,7 +19,7 @@
                                         <input class="form-control" name="fullname" [(ngModel)]="signUpRequest.name"
                                             #name="ngModel" type="text" id="fullname" placeholder="Enter your name"
                                             required="">
-                                        <div class="m-1 error" *ngIf="name.errors && name.errors.required">Please Enter
+                                        <div class="m-1 error" *ngIf="(name.touched || signUpForm.submitted) && name.errors && name.errors.required">Please Enter
                                             Name</div>
                                     </div>
 
@@ -28,7 +28,7 @@
                                         <input class="form-control" name="email" [(ngModel)]="signUpRequest.email"
                                             #email="ngModel" type="email" id="emailaddress" required=""
                                             placeholder="Enter your email">
-                                        <div class="m-1 error" *ngIf="email.errors && email.errors.required">Please
+                                        <div class="m-1 error" *ngIf="(email.touched || signUpForm.submitted) && email.errors && email.errors.required">Please
                                             Enter Email</div>
                                     </div>
 
@@ -37,7 +37,7 @@
                                         <input class="form-control" name="password" [(ngModel)]="signUpRequest.password"
                                             #password="ngModel" type="password" required="" id="password"
                                             placeholder="Enter your password">
-                                        <div class="m-1 error" *ngIf="password.errors && password.errors.required">
+                                        <div class="m-1 error" *ngIf="(password.touched || signUpForm.submitted) && password.errors && password.errors.required">
                                             Please Enter Password</div>
                                     </div>
 
@@ -72,8 +72,8 @@
                                         <label for="emailaddress">Email address</label>
                                         <input class="form-control" name="email" type="email" id="emailaddress" required
                                             name="email" placeholder="Enter your email" [(ngModel)]="loginRequest.email"
-                                            #email="ngModel">
-                                        <div class="m-1 error" *ngIf="email.errors && email.errors.required">Please
+                                            #loginemail="ngModel">
+                                        <div class="m-1 error" *ngIf="(loginemail.touched || loginForm.submitted) && loginemail.errors && loginemail.errors.required">Please
                                             Enter Email</div>
                                     </div>
 
@@ -82,9 +82,9 @@
                                                 your password?</small></a>
                                         <label for="password">Password</label>
                                         <input class="form-control" name="password" type="password" required
-                                            id="password" #password="ngModel" name="password"
+                                            id="password" #loginpassword="ngModel" name="password"
                                             placeholder="Enter your password" [(ngModel)]="loginRequest.password">
-                                        <div class="m-1 error" *ngIf="password.errors && password.errors.required">
+                                        <div class="m-1 error" *ngIf="(loginpassword.touched || loginForm.submitted) && loginpassword.errors && loginpassword.errors.required">
                                             Please Enter Password</div>
                                     </div>
 
@@ -98,7 +98,7 @@
                                     </div>
 
                                     <div class="form-group mb-0 text-center">
-                                        <a class="btn btn-dark w-100 text-center" (click)="login(loginForm)">LOG IN</a>
+                                        <button class="btn btn-dark w-100 text-center" type="submit" (click)="login(loginForm)">LOG IN</button>
                                         <!-- <button class="btn btn-dark w-100 text-center" type="submit"> LOG IN
                                         </button> -->
                                     </div>

@@ -30,4 +30,17 @@ export class CustomHttpService {
   postUser(request) {
     return this.http.post<any>(environment.url + 'api/inventory/postuser', request);
   }
+  sendEmail(request) {
+    return this.http.post<any>(environment.url + 'api/inventory/sendmail', request);
+  }
+  getendpoints() {
+    return this.http.get<any>(environment.url + 'api/inventory/getendpoints');
+  }
+  postEndpoint(request) {
+    return this.http.post<any>(environment.url + 'api/inventory/postendpoint', request);
+  }
+  deleteEndpoint(iid) {
+    return this.http.delete<any>(environment.url + 'api/inventory/deleteendpoint',
+    {params : { id : iid} } );
+  }
 }
