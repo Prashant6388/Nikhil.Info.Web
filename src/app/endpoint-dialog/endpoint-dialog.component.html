@@ -7,21 +7,25 @@
           <!-- <p class="text-muted mb-4 fs-14">Drop us a line</p> -->
         </div>
 
-        <form action="#">
+        <form #endpointForm="ngForm" (ngSubmit)="submit(endpointForm)">
           <div class="form-group">
             <label for="fullname">Title</label>
-            <input class="form-control" type="text" id="fullname" placeholder="Enter your name" required="">
+            <input class="form-control" type="text" id="title" name="title" [(ngModel)] ="endpoint.title" #title ="ngModel" placeholder="Enter your title" required="">
+            <div class="m-1 error" *ngIf="(title.touched || endpointForm.submitted) && title.errors && title.errors.required">
+              Please Enter Title</div>
           </div>
 
           <div class="form-group">
             <label for="fullname">Keywords</label>
-            <input class="form-control" type="text" id="fullname" placeholder="Enter your name" required="">
+            <input class="form-control" type="text" id="keywords" name="keywords" [(ngModel)] ="endpoint.keywords"   #keywords ="ngModel" placeholder="Enter your Keyword in comma" required="">
+            <div class="m-1 error" *ngIf="(keywords.touched || endpointForm.submitted) && keywords.errors && keywords.errors.required">
+              Please Enter Keywords</div>
           </div>
 
           <div mat-dialog-actions class="row form-group custom-gutters pb-0">
-            <div class="col-md-6"><button mat-button class="btn btn-secondary w-100"
+            <div class="col-md-6"><button type="button" mat-button class="btn btn-secondary w-100"
                 (click)="onNoClick()">Cancel</button></div>
-            <div class="col-md-6"><button mat-button class="btn btn-dark w-100" [mat-dialog-close]=""
+            <div class="col-md-6"><button mat-button type="submit" class="btn btn-dark w-100" 
                 cdkFocusInitial>Add</button>
             </div>
           </div>

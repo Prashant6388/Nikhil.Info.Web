@@ -18,108 +18,29 @@
                 </div>
             </div>
             <div class="row custom-gutters mb-3">
-                <div class="col-md-2">
+                <div class="col-md-2" *ngFor="let item of endpoints">
                     <mat-card>
                         <mat-card-subtitle style="position: relative">
-                            Anti-Malware
-                            <mat-icon class="close-icon">close</mat-icon>
+                            {{item.title}}
+                            <mat-icon class="close-icon" (click)="deleteEndPoints(item.id)">close</mat-icon>
                         </mat-card-subtitle>
                         <mat-card-content>
                             <div class="media">
-                                <img src="assets/images/doughnut.png" class="align-self-center mr-3 mt-1" alt="...">
+
+                                <!-- <img src="assets/images/doughnut.png" class="align-self-center mr-3 mt-1" alt="...">
                                 <div class="media-body">
                                     <div class="chart-widget-list">
                                     </div>
-                                </div>
+                                </div> -->
+
+                                <circle-progress [percent]="item.availableCountPer" [title]="item.availableCount" [radius]="100" [outerStrokeWidth]="16" [showUnits]="false" [showSubtitle]="false"
+                                    [innerStrokeWidth]="8" [outerStrokeColor]="'#78C000'" [titleFontSize]="45" [innerStrokeColor]="'#C7E596'"
+                                    [animation]="true" [animationDuration]="300" [responsive]="true"></circle-progress>
                             </div>
                         </mat-card-content>
                     </mat-card>
                 </div>
-                <div class="col-md-2">
-                    <mat-card>
-                        <mat-card-subtitle style="position: relative">
-                            Encryption
-                            <mat-icon class="close-icon">close</mat-icon>
-                        </mat-card-subtitle>
-                        <mat-card-content>
-                            <div class="media">
-                                <img src="assets/images/doughnut.png" class="align-self-center mr-3 mt-1" alt="...">
-                                <div class="media-body">
-                                    <div class="chart-widget-list">
-                                    </div>
-                                </div>
-                            </div>
-                        </mat-card-content>
-                    </mat-card>
-                </div>
-                <div class="col-md-2">
-                    <mat-card>
-                        <mat-card-subtitle style="position: relative">
-                            SCCM
-                            <mat-icon class="close-icon">close</mat-icon>
-                        </mat-card-subtitle>
-                        <mat-card-content>
-                            <div class="media">
-                                <img src="assets/images/doughnut.png" class="align-self-center mr-3 mt-1" alt="...">
-                                <div class="media-body">
-                                    <div class="chart-widget-list">
-                                    </div>
-                                </div>
-                            </div>
-                        </mat-card-content>
-                    </mat-card>
-                </div>
-                <div class="col-md-2">
-                    <mat-card>
-                        <mat-card-subtitle style="position: relative">
-                            Anti-Malware
-                            <mat-icon class="close-icon">close</mat-icon>
-                        </mat-card-subtitle>
-                        <mat-card-content>
-                            <div class="media">
-                                <img src="assets/images/doughnut.png" class="align-self-center mr-3 mt-1" alt="...">
-                                <div class="media-body">
-                                    <div class="chart-widget-list">
-                                    </div>
-                                </div>
-                            </div>
-                        </mat-card-content>
-                    </mat-card>
-                </div>
-                <div class="col-md-2">
-                    <mat-card>
-                        <mat-card-subtitle style="position: relative">
-                            Anti-Malware
-                            <mat-icon class="close-icon">close</mat-icon>
-                        </mat-card-subtitle>
-                        <mat-card-content>
-                            <div class="media">
-                                <img src="assets/images/doughnut.png" class="align-self-center mr-3 mt-1" alt="...">
-                                <div class="media-body">
-                                    <div class="chart-widget-list">
-                                    </div>
-                                </div>
-                            </div>
-                        </mat-card-content>
-                    </mat-card>
-                </div>
-                <div class="col-md-2">
-                    <mat-card>
-                        <mat-card-subtitle style="position: relative">
-                            Anti-Malware
-                            <mat-icon class="close-icon">close</mat-icon>
-                        </mat-card-subtitle>
-                        <mat-card-content>
-                            <div class="media">
-                                <img src="assets/images/doughnut.png" class="align-self-center mr-3 mt-1" alt="...">
-                                <div class="media-body">
-                                    <div class="chart-widget-list">
-                                    </div>
-                                </div>
-                            </div>
-                        </mat-card-content>
-                    </mat-card>
-                </div>
+                
             </div>
         </div>
     </div>
