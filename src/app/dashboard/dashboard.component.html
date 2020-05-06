@@ -1,0 +1,216 @@
+<div class="row my-3">
+    <div class="col-md-12">
+        <h5 class="mb-0">Dashboard</h5>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-12">
+        <div class="ep" style="background: #f1f3fa; padding: 12px 15px 1px; border-radius: 4px;">
+            <div class="row mb-1">
+                <div class="col-md-6">
+                    <h6 class="mt-2">Endpoints</h6>
+                </div>
+                <div class="col-md-6 text-right">
+                    <button mat-stroked-button (click)="openDialog()" class="mb-1" style="background: #fff;">
+                        <mat-icon class="mr-2">add_circle</mat-icon>Add
+                    </button>
+                </div>
+            </div>
+            <div class="row custom-gutters mb-3">
+                <div class="col-md-2" *ngFor="let item of endpoints">
+                    <mat-card>
+                        <mat-card-subtitle style="position: relative">
+                            {{item.title}}
+                            <mat-icon class="close-icon" (click)="deleteEndPoints(item.id)">close</mat-icon>
+                        </mat-card-subtitle>
+                        <mat-card-content>
+                            <div class="media">
+
+                                <!-- <img src="assets/images/doughnut.png" class="align-self-center mr-3 mt-1" alt="...">
+                                <div class="media-body">
+                                    <div class="chart-widget-list">
+                                    </div>
+                                </div> -->
+
+                                <circle-progress [percent]="item.availableCountPer" [title]="item.availableCount" [radius]="100" [outerStrokeWidth]="16" [showUnits]="false" [showSubtitle]="false"
+                                    [innerStrokeWidth]="8" [outerStrokeColor]="'#78C000'" [titleFontSize]="45" [innerStrokeColor]="'#C7E596'"
+                                    [animation]="true" [animationDuration]="300" [responsive]="true"></circle-progress>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row custom-gutters mb-3">
+    <div class="col-md-4">
+        <mat-card>
+            <mat-card-subtitle>
+                Application Security
+            </mat-card-subtitle>
+            <mat-card-content>
+                <div class="media">
+                    <img src="assets/images/piechart.png" class="align-self-center mr-3" alt="...">
+                    <div class="media-body">
+                        <div class="chart-widget-list">
+                            <p class="fs-14 mb-0">
+                                <i class="mdi mdi-square text-primary"></i> Anti-Malware
+                                <span class="float-right">300</span>
+                            </p>
+                            <p class="fs-14 mb-0">
+                                <i class="mdi mdi-square text-danger"></i> SCMM
+                                <span class="float-right">135</span>
+                            </p>
+                            <p class="fs-14 mb-0">
+                                <i class="mdi mdi-square text-success"></i> Encryption
+                                <span class="float-right">50</span>
+                            </p>
+                            <p class="fs-14 mb-0">
+                                <i class="mdi mdi-square text-warning"></i> E-mail
+                                <span class="float-right">155</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class="col-md-4">
+        <mat-card>
+            <mat-card-subtitle>
+                Application Security
+            </mat-card-subtitle>
+            <mat-card-content>
+                <div class="media">
+                    <img src="assets/images/piechart.png" class="align-self-center mr-3" alt="...">
+                    <div class="media-body">
+                        <div class="chart-widget-list">
+                            <p class="fs-14 mb-0">
+                                <i class="mdi mdi-square text-primary"></i> Anti-Malware
+                                <span class="float-right">300</span>
+                            </p>
+                            <p class="fs-14 mb-0">
+                                <i class="mdi mdi-square text-danger"></i> SCMM
+                                <span class="float-right">135</span>
+                            </p>
+                            <p class="fs-14 mb-0">
+                                <i class="mdi mdi-square text-success"></i> Encryption
+                                <span class="float-right">50</span>
+                            </p>
+                            <p class="fs-14 mb-0">
+                                <i class="mdi mdi-square text-warning"></i> E-mail
+                                <span class="float-right">155</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class="col-md-4">
+        <mat-card>
+            <mat-card-subtitle>
+                Application Security
+            </mat-card-subtitle>
+            <mat-card-content>
+                <div class="media">
+                    <img src="assets/images/piechart.png" class="align-self-center mr-3" alt="...">
+                    <div class="media-body">
+                        <div class="chart-widget-list">
+                            <p class="fs-14 mb-0">
+                                <i class="mdi mdi-square text-primary"></i> Anti-Malware
+                                <span class="float-right">300</span>
+                            </p>
+                            <p class="fs-14 mb-0">
+                                <i class="mdi mdi-square text-danger"></i> SCMM
+                                <span class="float-right">135</span>
+                            </p>
+                            <p class="fs-14 mb-0">
+                                <i class="mdi mdi-square text-success"></i> Encryption
+                                <span class="float-right">50</span>
+                            </p>
+                            <p class="fs-14 mb-0">
+                                <i class="mdi mdi-square text-warning"></i> E-mail
+                                <span class="float-right">155</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+<div class="row custom-gutters mb-3">
+    <div class="col-md-6">
+        <mat-card>
+            <mat-card-subtitle>
+                Application Security
+            </mat-card-subtitle>
+            <mat-card-content>
+                <div class="media">
+                    <img src="assets/images/piechart.png" class="align-self-center mr-3" alt="...">
+                    <div class="media-body">
+                        <div class="chart-widget-list">
+                            <p class="fs-14 mb-0">
+                                <i class="mdi mdi-square text-primary"></i> Anti-Malware
+                                <span class="float-right">300</span>
+                            </p>
+                            <p class="fs-14 mb-0">
+                                <i class="mdi mdi-square text-danger"></i> SCMM
+                                <span class="float-right">135</span>
+                            </p>
+                            <p class="fs-14 mb-0">
+                                <i class="mdi mdi-square text-success"></i> Encryption
+                                <span class="float-right">50</span>
+                            </p>
+                            <p class="fs-14 mb-0">
+                                <i class="mdi mdi-square text-warning"></i> E-mail
+                                <span class="float-right">155</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class="col-md-6">
+        <mat-card>
+            <mat-card-subtitle>
+                Application Security
+            </mat-card-subtitle>
+            <mat-card-content>
+                <div class="media">
+                    <img src="assets/images/piechart.png" class="align-self-center mr-3" alt="...">
+                    <div class="media-body">
+                        <div class="chart-widget-list">
+                            <p class="fs-14 mb-0">
+                                <i class="mdi mdi-square text-primary"></i> Anti-Malware
+                                <span class="float-right">300</span>
+                            </p>
+                            <p class="fs-14 mb-0">
+                                <i class="mdi mdi-square text-danger"></i> SCMM
+                                <span class="float-right">135</span>
+                            </p>
+                            <p class="fs-14 mb-0">
+                                <i class="mdi mdi-square text-success"></i> Encryption
+                                <span class="float-right">50</span>
+                            </p>
+                            <p class="fs-14 mb-0">
+                                <i class="mdi mdi-square text-warning"></i> E-mail
+                                <span class="float-right">155</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
