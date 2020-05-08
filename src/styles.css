@@ -251,6 +251,70 @@ button:focus {
     opacity: 1; /* Firefox */
   }
 
+.content {
+    background: #f8f9fa;
+}
+
 /* input:-internal-autofill-selected {
     background-color: #f8f9fa !important;
 } */
+
+/* Change autocomplete styles in WebKit */
+/* input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid green;
+  -webkit-text-fill-color: green;
+  -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  transition: background-color 5000s ease-in-out 0s;
+} */
+
+/* Dark Mode */
+
+body {
+    background: #5c6166;
+}
+
+.content {
+    background: #5c6166;
+}
+
+.epts {
+    background: #484d53;
+    padding: 8px;
+}
+
+.search-box {
+    background: #343a40;
+    border-color: #484d53;
+}
+
+.search-button {
+    padding: 0 8px;
+    border-color: #484d53;
+    background: #343a40;
+}
+
+.mat-paginator{
+    background: #343a40;
+    color: orange
+}
+
+.mat-select-value-text {
+    color: orange;
+}
+
+.mat-select-arrow {
+    color: orange;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: orange;
+}
+
