@@ -149,4 +149,40 @@ export class PtNetworkDevicesComponent implements OnInit {
 
     return searchPTNetworkService;
   }
+  sendEmail(type: string) {
+    let exportAsConfig: ExportAsConfig = null;
+    if (type === 'PDF') {
+      const marginArray = [5, 0, 10, 0];
+      exportAsConfig = {
+        type: 'pdf',
+        elementIdOrContent: this.getPrintData(),
+        options: {
+          jsPDF: { orientation: 'landscape' },
+          margin: marginArray,
+          pagebreak: { before: '.header' },
+        }
+      };
+      this.exportAsService.get(exportAsConfig).subscribe((byteArray) => {
+
+
+        fetch(byteArray)
+          .then(res => res.blob())
+          .then(blob => {
+            // var fd = new FormData()
+            // fd.append('image', blob, 'filename')
+
+            // console.log(blob)
+            const req =
+            {
+              fileArray: blob,
+              fileName: 'asset-search.pdf'
+            };
+            this.customHttpService.sendEmail(req).subscribe(response => {
+
+            });
+          });
+
+      });
+    }
+  }
 }
