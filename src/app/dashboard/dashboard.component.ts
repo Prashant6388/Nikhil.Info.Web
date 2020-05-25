@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EndpointDialogComponent } from '../endpoint-dialog/endpoint-dialog.component';
 import { CustomHttpService } from '../services/custom-http.service';
@@ -19,105 +19,12 @@ noData(Highcharts);
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, AfterViewInit {
 
   endpoints = [];
 
-  seriesData = [['Critical', 0], ['High', 0], ['Medium', 0], ['Low', 0]];
-  public options: any = {
-    title: {
-      text: ''
-    },
-    xAxis: {
-      labels: {
-        format: '<div style="text-align:center;font-size:7px">&nbsp; Critical&nbsp; High&nbsp; Medium&nbsp; Low<br /><br /><div style="text-align:center;font-size:10px">{value}</div></div>',
-        useHTML: true
-      },
-      tickInterval: 1,
-      // labels: {
-      //   enabled: true,
-      //   formatter() { return this.value; },
-      // },
-      tickLength: 50,
-      categories: ['Application01', 'Application02', 'Application03']
-    },
 
-    yAxis: {
-      allowDecimals: false,
-      stackLabels:
-      {
-        // enabled: true,
-        // verticalAlign: 'bottom',
-        // rotation: -45,
-        // formatter() {
-        //   return this.stack;
-        // }
-      },
-      min: 0,
-      title: {
-        text: 'Count of Severity'
-      }
-    },
-    legend: {
-      layout: 'vertical',
-      align: 'right',
-      verticalAlign: 'top',
-      floating: true,
-      backgroundColor: '#FFFFFF',
-      labelFormatter() {
-        return this.userOptions.stack + ' - ' + this.name;
-      }
-    },
-    tooltip: {
-      formatter() {
-        return '<b>' + this.x + '</b><br/>' +
-          this.series.name + ': ' + this.y + '<br/>' +
-          'Total: ' + this.point.stackTotal;
-      }
-    },
 
-    plotOptions: {
-      column: {
-        stacking: 'normal',
-        pointPadding: 0.2,
-        groupPadding: 0.2,
-        pointWidth: 10,
-        padding: 10,
-      }
-    },
-
-    series: [{
-      type: 'column',
-      name: 'Open',
-      data: [1, 2, 1],
-      stack: 'Critical'
-    },
-    {
-      type: 'column',
-      name: 'Closed',
-      data: [1, 2, 1],
-      stack: 'Critical'
-    },
-    {
-      type: 'column',
-      name: 'Closed',
-      data: [1, 2, 1],
-      stack: 'High'
-    },
-    {
-      type: 'column',
-      name: 'Closed',
-      data: [1, 2, 1],
-      stack: 'Medium'
-    },
-    {
-      type: 'column',
-      name: 'Open',
-      data: [1, 2, 1],
-      stack: 'Low'
-    }
-    ]
-  };
 
 
 
@@ -128,6 +35,7 @@ export class DashboardComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(EndpointDialogComponent, {
       width: '400px',
+      disableClose : true
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -137,7 +45,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEndPoints();
-    Highcharts.chart('assetSearchContainer', this.options);
+
   }
 
   getEndPoints() {
@@ -148,6 +56,226 @@ export class DashboardComponent implements OnInit {
   deleteEndPoints(id) {
     this.customHttpService.deleteEndpoint(id).subscribe(response => {
       this.getEndPoints();
+    });
+  }
+  getapplicationsecuritybarchart() {
+    this.customHttpService.getapplicationsecuritybarchart().subscribe(response => {
+      const applicationSecurityChartData = response;
+      const options: any =
+      {
+        title: {
+          text: ''
+        },
+        xAxis: {
+          labels: {
+            format: '<div style="text-align:center;font-size:7px">Critical &nbsp; High &nbsp; Medium &nbsp; Low<br /><br /><div style="text-align:center;font-size:10px">{value}</div></div>',
+            useHTML: true
+          },
+          tickInterval: 1,
+          // labels: {
+          //   enabled: true,
+          //   formatter() { return this.value; },
+          // },
+          tickLength: 50,
+          categories: applicationSecurityChartData.categories
+        },
+
+        yAxis: {
+          allowDecimals: false,
+          stackLabels:
+          {
+            // enabled: true,
+            // verticalAlign: 'bottom',
+            // rotation: -45,
+            // formatter() {
+            //   return this.stack;
+            // }
+          },
+          min: 0,
+          title: {
+            text: 'Count of Severity'
+          }
+        },
+        legend: {
+          layout: 'vertical',
+          align: 'right',
+          verticalAlign: 'top',
+          floating: true,
+          backgroundColor: '#FFFFFF',
+          labelFormatter() {
+            return this.userOptions.stack + ' - ' + this.name;
+          }
+        },
+        tooltip: {
+          formatter() {
+            return '<b>' + this.x + '</b><br/>' +
+              this.series.name + ': ' + this.y + '<br/>' +
+              'Total: ' + this.point.stackTotal;
+          }
+        },
+
+        plotOptions: {
+          column: {
+            stacking: 'normal',
+            pointPadding: 0.2,
+            groupPadding: 0.2,
+            pointWidth: 10,
+            padding: 20,
+          }
+        },
+
+        series: applicationSecurityChartData.series
+      };
+      Highcharts.chart('assetSearchContainer', options);
+    });
+  }
+  ngAfterViewInit(): void {
+    this.getapplicationsecuritybarchart();
+    this.getvaserverbarchart();
+    this.getptnetworkservicebarchart();
+  }
+
+  getptnetworkservicebarchart() {
+    this.customHttpService.getptnetworkservicebarchart().subscribe(response => {
+      const ptnetworkServiceChartData = response;
+      const options: any =
+      {
+        title: {
+          text: ''
+        },
+        xAxis: {
+          labels: {
+            format: '<div style="text-align:center;font-size:7px">Critical &nbsp; High &nbsp; Medium &nbsp; Low<br /><br /><div style="text-align:center;font-size:10px">{value}</div></div>',
+            useHTML: true
+          },
+          tickInterval: 1,
+          // labels: {
+          //   enabled: true,
+          //   formatter() { return this.value; },
+          // },
+          tickLength: 50,
+          categories: ptnetworkServiceChartData.categories
+        },
+
+        yAxis: {
+          allowDecimals: false,
+          stackLabels:
+          {
+            // enabled: true,
+            // verticalAlign: 'bottom',
+            // rotation: -45,
+            // formatter() {
+            //   return this.stack;
+            // }
+          },
+          min: 0,
+          title: {
+            text: 'Count of Severity'
+          }
+        },
+        legend: {
+          layout: 'vertical',
+          align: 'right',
+          verticalAlign: 'top',
+          floating: true,
+          backgroundColor: '#FFFFFF',
+          labelFormatter() {
+            return this.userOptions.stack + ' - ' + this.name;
+          }
+        },
+        tooltip: {
+          formatter() {
+            return '<b>' + this.x + '</b><br/>' +
+              this.series.name + ': ' + this.y + '<br/>' +
+              'Total: ' + this.point.stackTotal;
+          }
+        },
+
+        plotOptions: {
+          column: {
+            stacking: 'normal',
+            pointPadding: 0.2,
+            groupPadding: 0.2,
+            pointWidth: 10,
+            padding: 10,
+          }
+        },
+
+        series: ptnetworkServiceChartData.series
+      };
+      Highcharts.chart('PTNetworkContainer', options);
+    });
+  }
+
+  getvaserverbarchart() {
+    this.customHttpService.getvaserverbarchart().subscribe(response => {
+      const vaserverChartData = response;
+      const options: any =
+      {
+        title: {
+          text: ''
+        },
+        xAxis: {
+          labels: {
+            format: '<div style="text-align:center;font-size:7px">Critical &nbsp; High &nbsp; Medium &nbsp; Low<br /><br /><div style="text-align:center;font-size:10px">{value}</div></div>',
+            useHTML: true
+          },
+          tickInterval: 1,
+          // labels: {
+          //   enabled: true,
+          //   formatter() { return this.value; },
+          // },
+          tickLength: 50,
+          categories: vaserverChartData.categories
+        },
+
+        yAxis: {
+          allowDecimals: false,
+          stackLabels:
+          {
+            // enabled: true,
+            // verticalAlign: 'bottom',
+            // rotation: -45,
+            // formatter() {
+            //   return this.stack;
+            // }
+          },
+          min: 0,
+          title: {
+            text: 'Count of Severity'
+          }
+        },
+        legend: {
+          layout: 'vertical',
+          align: 'right',
+          verticalAlign: 'top',
+          floating: true,
+          backgroundColor: '#FFFFFF',
+          labelFormatter() {
+            return this.userOptions.stack + ' - ' + this.name;
+          }
+        },
+        tooltip: {
+          formatter() {
+            return '<b>' + this.x + '</b><br/>' +
+              this.series.name + ': ' + this.y + '<br/>' +
+              'Total: ' + this.point.stackTotal;
+          }
+        },
+
+        plotOptions: {
+          column: {
+            stacking: 'normal',
+            pointPadding: 0.2,
+            groupPadding: 0.2,
+            pointWidth: 10,
+            padding: 10,
+          }
+        },
+
+        series: vaserverChartData.series
+      };
+      Highcharts.chart('VAServerContainer', options);
     });
   }
 }

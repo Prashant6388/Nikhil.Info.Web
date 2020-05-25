@@ -31,6 +31,7 @@ import { EndpointDialogComponent } from './endpoint-dialog/endpoint-dialog.compo
 import { MatDialogModule } from '@angular/material/dialog';
 import { UserAccessDialogComponent } from './user-access-dialog/user-access-dialog.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +66,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     ExportAsModule,
     MatTooltipModule,
     CommonModule,
+    MatSelectModule,
     NgCircleProgressModule.forRoot({})    
   ],
   entryComponents: [

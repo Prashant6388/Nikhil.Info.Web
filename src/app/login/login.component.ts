@@ -43,8 +43,8 @@ export class LoginComponent implements OnInit {
   signUp(form: NgForm) {
     if (form.valid) {
       this.customHttpService.postUser(this.signUpRequest).subscribe(response => {
-        // this.storeService.loggedInUser = response;
-        // this.router.navigate(['/dashboard']);
+        this.storeService.loggedInUser = response;
+        this.router.navigate(['/dashboard']);
       });
     }
   }

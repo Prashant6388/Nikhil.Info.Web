@@ -5,7 +5,24 @@
 </div>
 
 <div class="row my-3 custom-gutters">
-    <div class="col-md-10">
+    <div class="col-md-3">
+        <div class="epts">
+            
+                <select [(ngModel)]="searchColumn" class="form-control" name="searchColumn">
+                    <option value="All">All</option>
+                    <option value="loggedInUser">Logged In User</option>
+                    <option value="computerName">Computer Name</option>
+                    <option value="operatingSystem">Operating System</option>
+                    <option value="ipAddress">IP Address</option>
+                    <option value="softwareInstalled">Software Installed</option>
+                    <option value="softwareVersion">Software Version</option>
+                    <option value="patchesInstalled">Patches Installed</option>
+                    <option value="userAccountDetails">User Account Details</option>
+                </select>
+           
+        </div>
+    </div>
+    <div class="col-md-7">
         <div class="epts">
             <div class="input-group">
                 <input type="text" class="form-control"
