@@ -23,6 +23,7 @@
     "@angular/router": "~9.1.1",
     "angular-highcharts": "^9.0.9",
     "bootstrap": "^4.4.1",
+    "highcharts": "^8.1.0",
     "html2canvas": "^1.0.0-rc.5",
     "html2pdf.js": "^0.9.0",
     "jquery": "^3.4.1",

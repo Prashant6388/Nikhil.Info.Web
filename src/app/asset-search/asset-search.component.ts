@@ -11,6 +11,7 @@ export class AssetSearchComponent implements OnInit {
 
   assets = [];
   searchCriteria = '';
+  searchColumn = 'All';
   length = 0;
   pageEvent =
     {
@@ -31,38 +32,58 @@ export class AssetSearchComponent implements OnInit {
   getAssetSearch() {
 
     // tslint:disable-next-line:variable-name
+    if (this.searchColumn === 'All') {
 
-    this.length = this.assets
-      .filter(item =>
-        item.loggedInUser.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
-        item.ipAddress.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
-        item.computerName.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
-        item.operatingSystem.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
-        item.patchesInstalled.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
-        item.softwareInstalled.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
-        item.softwareVersion.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
-        item.userAccountDetails.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0
-      ).length;
+      this.length = this.assets
+        .filter(item =>
+          item.loggedInUser.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
+          item.ipAddress.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
+          item.computerName.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
+          item.operatingSystem.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
+          item.patchesInstalled.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
+          item.softwareInstalled.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
+          item.softwareVersion.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
+          item.userAccountDetails.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0
+        ).length;
 
-    if (this.length < this.pageEvent.pageSize) {
-      this.pageEvent.pageIndex = 0;
+      if (this.length < this.pageEvent.pageSize) {
+        this.pageEvent.pageIndex = 0;
+      }
+
+      const searchAssets = this.assets
+        .filter(item =>
+          item.loggedInUser.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
+          item.ipAddress.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
+          item.computerName.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
+          item.operatingSystem.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
+          item.patchesInstalled.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
+          item.softwareInstalled.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
+          item.softwareVersion.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
+          item.userAccountDetails.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0
+        )
+        .slice(this.pageEvent.pageIndex * this.pageEvent.pageSize, (this.pageEvent.pageIndex + 1) * this.pageEvent.pageSize);
+
+      return searchAssets;
     }
+    else {
+      this.length = this.assets
+        .filter(item =>
+          item[this.searchColumn].toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0
+        ).length;
 
-    const searchAssets = this.assets
-      .filter(item =>
-        item.loggedInUser.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
-        item.ipAddress.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
-        item.computerName.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
-        item.operatingSystem.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
-        item.patchesInstalled.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
-        item.softwareInstalled.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
-        item.softwareVersion.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
-        item.userAccountDetails.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0
-      )
-      .slice(this.pageEvent.pageIndex * this.pageEvent.pageSize, (this.pageEvent.pageIndex + 1) * this.pageEvent.pageSize);
+      if (this.length < this.pageEvent.pageSize) {
+        this.pageEvent.pageIndex = 0;
+      }
+
+      const searchAssets = this.assets
+        .filter(item =>
+          item[this.searchColumn].toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0
+        )
+        .slice(this.pageEvent.pageIndex * this.pageEvent.pageSize, (this.pageEvent.pageIndex + 1) * this.pageEvent.pageSize);
 
 
-    return searchAssets;
+      return searchAssets;
+    }
   }
   pageChanged(event) {
     this.pageEvent = event;
@@ -147,20 +168,29 @@ export class AssetSearchComponent implements OnInit {
   }
   getAssetSearchPrint() {
 
-    const searchAssets = this.assets
-      .filter(item =>
-        item.loggedInUser.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
-        item.ipAddress.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
-        item.computerName.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
-        item.operatingSystem.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
-        item.patchesInstalled.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
-        item.softwareInstalled.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
-        item.softwareVersion.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
-        item.userAccountDetails.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0
-      );
+    if (this.searchColumn === 'All') {
+      const searchAssets = this.assets
+        .filter(item =>
+          item.loggedInUser.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
+          item.ipAddress.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
+          item.computerName.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
+          item.operatingSystem.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
+          item.patchesInstalled.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
+          item.softwareInstalled.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
+          item.softwareVersion.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0 ||
+          item.userAccountDetails.toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0
+        );
+      return searchAssets;
+    }
+    else {
+      const searchAssets = this.assets
+        .filter(item =>
+          item[this.searchColumn].toLowerCase().indexOf(this.searchCriteria.toLowerCase()) >= 0
+        );
+      return searchAssets;
+    }
 
 
-    return searchAssets;
   }
   sendEmail(type: string) {
     let exportAsConfig: ExportAsConfig = null;

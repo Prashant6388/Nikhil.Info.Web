@@ -43,4 +43,13 @@ export class CustomHttpService {
     return this.http.delete<any>(environment.url + 'api/inventory/deleteendpoint',
     {params : { id : iid} } );
   }
+  getapplicationsecuritybarchart() {
+    return this.http.get<any>(environment.url + 'api/inventory/getapplicationsecuritybarchart');
+  }
+  getptnetworkservicebarchart() {
+    return this.http.get<any>(environment.url + 'api/inventory/getptnetworkservicebarchart');
+  }
+  getvaserverbarchart() {
+    return this.http.get<any>(environment.url + 'api/inventory/getvaserverbarchart');
+  }
 }

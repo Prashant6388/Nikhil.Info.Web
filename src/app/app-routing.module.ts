@@ -9,35 +9,36 @@ import { PtNetworkDevicesComponent } from './pt-network-devices/pt-network-devic
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { UserAccessComponent } from './user-access/user-access.component';
 import { VaServersComponent } from './va-servers/va-servers.component';
+import { AuthGuard } from './guard/auth.guard';
 
 
 const routes: Routes = [
   {
-    path: 'app-sec', component: AppSecComponent
+    path: 'app-sec', component: AppSecComponent, canActivate : [AuthGuard]
   },
   {
-    path: 'asset-search', component: AssetSearchComponent
+    path: 'asset-search', component: AssetSearchComponent, canActivate : [AuthGuard]
   },
   {
-    path: 'contact-us', component: ContactUsComponent
+    path: 'contact-us', component: ContactUsComponent, canActivate : [AuthGuard]
   },
   {
-    path: 'dashboard', component: DashboardComponent
+    path: 'dashboard', component: DashboardComponent, canActivate : [AuthGuard]
   },
   {
     path: 'login', component: LoginComponent
   },
   {
-    path: 'pt-network-devices', component: PtNetworkDevicesComponent
+    path: 'pt-network-devices', component: PtNetworkDevicesComponent, canActivate : [AuthGuard]
   },
   {
-    path: 'reset-password', component: ResetPasswordComponent
+    path: 'reset-password', component: ResetPasswordComponent, canActivate : [AuthGuard]
   },
   {
-    path: 'user-access', component: UserAccessComponent
+    path: 'user-access', component: UserAccessComponent, canActivate : [AuthGuard]
   },
   {
-    path: 'va-servers', component: VaServersComponent
+    path: 'va-servers', component: VaServersComponent, canActivate : [AuthGuard]
   },
   {
     path: '', redirectTo: '/login', pathMatch: 'full'

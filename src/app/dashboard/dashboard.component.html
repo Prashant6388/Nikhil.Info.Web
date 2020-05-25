@@ -33,8 +33,8 @@
                                     </div>
                                 </div> -->
 
-                                <circle-progress [percent]="item.availableCountPer" [title]="item.availableCount" [radius]="100" [outerStrokeWidth]="16" [showUnits]="false" [showSubtitle]="false"
-                                    [innerStrokeWidth]="8" [outerStrokeColor]="'#78C000'" [titleFontSize]="45" [innerStrokeColor]="'#C7E596'"
+                                <circle-progress [percent]="item.availableCountPer" [title]="item.titleCount" [radius]="100" [outerStrokeWidth]="16" [showUnits]="false" [showSubtitle]="false"
+                                    [innerStrokeWidth]="8" [outerStrokeColor]="'#78C000'" [titleFontSize]="35" [innerStrokeColor]="'#C7E596'"
                                     [animation]="true" [animationDuration]="300" [responsive]="true"></circle-progress>
                             </div>
                         </mat-card-content>
@@ -148,69 +148,46 @@
 </div>
 
 <div class="row custom-gutters mb-3">
-    <div class="col-md-6">
+    <div class="col-md-6" >
         <mat-card>
             <mat-card-subtitle>
                 Application Security
             </mat-card-subtitle>
             <mat-card-content>
                 <div class="media">
-                    <img src="assets/images/piechart.png" class="align-self-center mr-3" alt="...">
-                    <div class="media-body">
-                        <div class="chart-widget-list">
-                            <p class="fs-14 mb-0">
-                                <i class="mdi mdi-square text-primary"></i> Anti-Malware
-                                <span class="float-right">300</span>
-                            </p>
-                            <p class="fs-14 mb-0">
-                                <i class="mdi mdi-square text-danger"></i> SCMM
-                                <span class="float-right">135</span>
-                            </p>
-                            <p class="fs-14 mb-0">
-                                <i class="mdi mdi-square text-success"></i> Encryption
-                                <span class="float-right">50</span>
-                            </p>
-                            <p class="fs-14 mb-0">
-                                <i class="mdi mdi-square text-warning"></i> E-mail
-                                <span class="float-right">155</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </mat-card-content>
-        </mat-card>
-    </div>
+                    <div id="assetSearchContainer" style="width:90%"></div>
 
-    <div class="col-md-6">
-        <mat-card>
-            <mat-card-subtitle>
-                Application Security
-            </mat-card-subtitle>
-            <mat-card-content>
-                <div class="media">
-                    <img src="assets/images/piechart.png" class="align-self-center mr-3" alt="...">
-                    <div class="media-body">
-                        <div class="chart-widget-list">
-                            <p class="fs-14 mb-0">
-                                <i class="mdi mdi-square text-primary"></i> Anti-Malware
-                                <span class="float-right">300</span>
-                            </p>
-                            <p class="fs-14 mb-0">
-                                <i class="mdi mdi-square text-danger"></i> SCMM
-                                <span class="float-right">135</span>
-                            </p>
-                            <p class="fs-14 mb-0">
-                                <i class="mdi mdi-square text-success"></i> Encryption
-                                <span class="float-right">50</span>
-                            </p>
-                            <p class="fs-14 mb-0">
-                                <i class="mdi mdi-square text-warning"></i> E-mail
-                                <span class="float-right">155</span>
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </mat-card-content>
         </mat-card>
     </div>
-</div>
+    <div class="col-md-6" >
+        <mat-card>
+            <mat-card-subtitle>
+                PT Network Service
+            </mat-card-subtitle>
+            <mat-card-content>
+                <div class="media">
+                    <div id="PTNetworkContainer" style="width:90%"></div>
+
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+  </div>
+  <div class="row custom-gutters mb-3">
+    <div class="col-md-6" >
+        <mat-card>
+            <mat-card-subtitle>
+                VA Server
+            </mat-card-subtitle>
+            <mat-card-content>
+                <div class="media">
+                    <div id="VAServerContainer" style="width:90%"></div>
+
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+  
+  </div>
