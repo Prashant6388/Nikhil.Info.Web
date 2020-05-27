@@ -29,7 +29,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { UserAccessFormComponent } from './user-access-form/user-access-form.component';
 import { EndpointDialogComponent } from './endpoint-dialog/endpoint-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { UserAccessDialogComponent } from './user-access-dialog/user-access-dialog.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { MatSelectModule } from '@angular/material/select';
 @NgModule({
@@ -46,8 +45,7 @@ import { MatSelectModule } from '@angular/material/select';
     PtNetworkDevicesComponent,
     AppSecComponent,
     UserAccessComponent,
-    EndpointDialogComponent,
-    UserAccessDialogComponent,
+    EndpointDialogComponent,    
     UserAccessFormComponent
   ],
   imports: [
@@ -67,10 +65,10 @@ import { MatSelectModule } from '@angular/material/select';
     MatTooltipModule,
     CommonModule,
     MatSelectModule,
-    NgCircleProgressModule.forRoot({})    
+    NgCircleProgressModule.forRoot({})
   ],
   entryComponents: [
-    EndpointDialogComponent, UserAccessDialogComponent, UserAccessFormComponent
+    EndpointDialogComponent, UserAccessFormComponent
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }

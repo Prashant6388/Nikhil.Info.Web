@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  url : 'http://localhost:60632/'
+  //url : 'http://localhost:60632/',
+  url : 'http://182.18.139.46/Info.Web.API/',
 };
 
 /*

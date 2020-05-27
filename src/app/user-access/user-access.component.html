@@ -5,7 +5,7 @@
 </div>
 
 <div class="row my-3">
-    <div class="col-md-12">
+    <div class="col-md-10">
         <div class="epts">
             <div class="input-group">
                 <input type="text" class="form-control"
@@ -19,6 +19,14 @@
                     </button>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="col-md-2 text-right">
+        <div class="epts">
+            <button mat-stroked-button (click)="openDialog(null)" class="mb-1" style="background: #fff;">
+                <mat-icon class="mr-2">add_circle</mat-icon>Add
+            </button>
         </div>
     </div>
 </div>
@@ -44,11 +52,13 @@
                             <td>{{item.email}}</td>
                             <td>{{item.contactNo}}</td>
                             <td style="width: 10%; text-align: center; padding: 8px;">
-                                <button mat-button style="padding: 0; min-width: 32px; height: 32px; line-height: 32px;" class="mr-2">
-                                    <mat-icon class="icon-action" (click)="openDialog()">create</mat-icon>
+                                <button mat-button style="padding: 0; min-width: 32px; height: 32px; line-height: 32px;"
+                                    class="mr-2">
+                                    <mat-icon class="icon-action" (click)="openDialog(item)">create</mat-icon>
                                 </button>
-                                <button mat-button color="warn" style="padding: 0; min-width: 32px; height: 32px; line-height: 32px;">
-                                    <mat-icon class="icon-action">clear</mat-icon>
+                                <button mat-button color="warn" 
+                                    style="padding: 0; min-width: 32px; height: 32px; line-height: 32px;">
+                                    <mat-icon class="icon-action" (click)="deleteUser(item.id)">clear</mat-icon>
                                 </button>
                             </td>
                         </tr>

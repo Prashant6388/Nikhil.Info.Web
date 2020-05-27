@@ -7,38 +7,50 @@
                     <!-- <p class="text-muted mb-4 fs-14">Drop us a line</p> -->
                 </div>
 
-                <form action="#">
+                <form #userForm="ngForm" (ngSubmit)="submit(userForm)">
                     <div class="form-group">
                         <label for="fullname">Full Name</label>
-                        <input class="form-control" type="text" id="fullname" placeholder="Enter your name" required="">
+                        <input class="form-control" type="text" name="fullname" [(ngModel)]="user.name"
+                         placeholder="Enter your name" required #name="ngModel">
+                        <div class="m-1 error" *ngIf="(name.touched || userForm.submitted) && 
+                        name.errors && name.errors.required">
+                            Please Enter Name</div>
                     </div>
 
                     <div class="form-group">
                         <label for="emailaddress">Email address</label>
-                        <input class="form-control" type="email" id="emailaddress" required=""
-                            placeholder="Enter your email">
+                        <input class="form-control" type="email" name="emailaddress" required
+                            placeholder="Enter your email" [(ngModel)]="user.email" #email="ngModel">
+                            <div class="m-1 error" *ngIf="(email.touched || userForm.submitted) && 
+                            email.errors && email.errors.required">
+                            Please Enter Email</div>
                     </div>
 
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input class="form-control" type="password" required="" id="password"
-                            placeholder="Enter your password">
+                        <input class="form-control" type="password" required name="password"
+                            placeholder="Enter your Password" #password="ngModel" [(ngModel)]="user.password">
+                            <div class="m-1 error" *ngIf="(password.touched || userForm.submitted) && 
+                            password.errors && password.errors.required">
+                            Please Enter Password</div>
                     </div>
 
                     <div class="form-group">
                         <label for="fullname">Contact No.</label>
-                        <input class="form-control" type="text" id="contactno" placeholder="Enter your name"
-                            required="">
+                        <input class="form-control" type="text" name="contactno" placeholder="Enter your Contact No"
+                        required [(ngModel)]="user.contactNo" #contactno="ngModel">
+                        <div class="m-1 error" *ngIf="(contactno.touched || userForm.submitted) && 
+                        contactno.errors && contactno.errors.required">
+                        Please Enter Contact No</div>
                     </div>
 
                     <div mat-dialog-actions class="row form-group custom-gutters pb-0">
-                        <div class="col-md-6"><button mat-button class="btn btn-secondary w-100">Cancel</button></div>
-                        <div class="col-md-6"><button mat-button class="btn btn-dark w-100" cdkFocusInitial>Add</button>
+                        <div class="col-md-6"><button mat-button type="button" class="btn btn-secondary w-100" (click)="onNoClick()">Cancel</button></div>
+                        <div class="col-md-6"><button mat-button type="submit" class="btn btn-dark w-100" cdkFocusInitial>Submit</button>
                         </div>
                     </div>
                 </form> 
-            </mat-card-content>
-            
+            </mat-card-content>            
         </mat-card>
     </div>
 </div>

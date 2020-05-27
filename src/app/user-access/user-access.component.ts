@@ -24,6 +24,9 @@ export class UserAccessComponent implements OnInit {
     public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.getUsers();
+  }
+  getUsers() {
     this.customHttpService.getusers().subscribe(response => {
       this.users = response;
     });
@@ -57,15 +60,19 @@ export class UserAccessComponent implements OnInit {
   pageChanged(event) {
     this.pageEvent = event;
   }
-  openDialog(): void {
+  openDialog(item): void {
     const dialogRef = this.dialog.open(UserAccessFormComponent, {
       width: '400px',
-      data: {}
+      data: item != null ? item : null
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      this.getUsers();
     });
   }
-
+  deleteUser(id) {
+    this.customHttpService.deleteUser(id).subscribe(response => {
+      this.getUsers();
+    });
+  }
 }
