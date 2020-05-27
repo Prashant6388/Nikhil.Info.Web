@@ -52,4 +52,7 @@ export class CustomHttpService {
   getvaserverbarchart() {
     return this.http.get<any>(environment.url + 'api/inventory/getvaserverbarchart');
   }
+  deleteUser(id) {
+    return this.http.post<any>(environment.url + 'api/inventory/deleteuser/'+ id, null);
+  }
 }

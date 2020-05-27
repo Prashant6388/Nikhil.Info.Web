@@ -206,26 +206,19 @@ export class AssetSearchComponent implements OnInit {
         }
       };
       this.exportAsService.get(exportAsConfig).subscribe((byteArray) => {
+        const arrayFile = byteArray.split('base64');
+        const file = arrayFile[1].substring(1, arrayFile[1].length);
 
+        const req =
+        {
+          fileArray: encodeURIComponent(file),
+          fileName: 'asset-search.pdf'
+        };
+        this.customHttpService.sendEmail(req).subscribe(response => {
 
-        fetch(byteArray)
-          .then(res => res.blob())
-          .then(blob => {
-            // var fd = new FormData()
-            // fd.append('image', blob, 'filename')
-
-            // console.log(blob)
-            const req =
-            {
-              fileArray: blob,
-              fileName: 'asset-search.pdf'
-            };
-            this.customHttpService.sendEmail(req).subscribe(response => {
-
-            });
-          });
-
+        });
       });
     }
   }
 }
+
