@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
     if (form.valid) {
       this.customHttpService.postUser(this.signUpRequest).subscribe(response => {
         this.storeService.loggedInUser = response;
+        this.storeService.openSuccessDialog('User Created Successfully');
         this.router.navigate(['/dashboard']);
       });
     }

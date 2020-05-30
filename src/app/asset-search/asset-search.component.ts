@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomHttpService } from '../services/custom-http.service';
 import { ExportAsService, ExportAsConfig } from 'ngx-export-as';
+import { StoreService } from '../services/store.service';
+import { MatDialog } from '@angular/material/dialog';
+import { EmailDialogComponent } from '../email-dialog/email-dialog.component';
 
 @Component({
   selector: 'app-asset-search',
@@ -21,7 +24,9 @@ export class AssetSearchComponent implements OnInit {
   pageSizeOptions: number[] = [10, 25, 50, 100];
   constructor(
     private customHttpService: CustomHttpService,
-    private exportAsService: ExportAsService
+    private exportAsService: ExportAsService,
+    private storeService: StoreService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -191,34 +196,43 @@ export class AssetSearchComponent implements OnInit {
     }
 
 
-  }
-  sendEmail(type: string) {
+  } 
+
+  openEmailDialog(): void {
+
     let exportAsConfig: ExportAsConfig = null;
-    if (type === 'PDF') {
-      const marginArray = [5, 0, 10, 0];
-      exportAsConfig = {
-        type: 'pdf',
-        elementIdOrContent: this.getPrintData(),
-        options: {
-          jsPDF: { orientation: 'landscape' },
-          margin: marginArray,
-          pagebreak: { before: '.header' },
-        }
+    const marginArray = [5, 0, 10, 0];
+    exportAsConfig = {
+      type: 'pdf',
+      elementIdOrContent: this.getPrintData(),
+      options: {
+        jsPDF: { orientation: 'landscape' },
+        margin: marginArray,
+        pagebreak: { before: '.header' },
+      }
+    };
+    this.exportAsService.get(exportAsConfig).subscribe((byteArray) => {
+      const arrayFile = byteArray.split('base64');
+      const file = arrayFile[1].substring(1, arrayFile[1].length);
+
+      const req =
+      {
+        fileArray: file,
+        fileName: 'asset-search.pdf',
+        Subject: 'Asset Search Report',
+        body: 'Please Find Attached Asset Search Report.',
+        emailID: '',
+        loginName: ''
       };
-      this.exportAsService.get(exportAsConfig).subscribe((byteArray) => {
-        const arrayFile = byteArray.split('base64');
-        const file = arrayFile[1].substring(1, arrayFile[1].length);
 
-        const req =
-        {
-          fileArray: encodeURIComponent(file),
-          fileName: 'asset-search.pdf'
-        };
-        this.customHttpService.sendEmail(req).subscribe(response => {
-
-        });
+      const dialogRef = this.dialog.open(EmailDialogComponent, {
+        width: '400px',
+        disableClose: true,
+        data: req
       });
-    }
+
+    });
+
   }
 }
 

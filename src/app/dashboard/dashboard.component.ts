@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { EndpointDialogComponent } from '../endpoint-dialog/endpoint-dialog.component';
 import { CustomHttpService } from '../services/custom-http.service';
 import * as Highcharts from 'highcharts';
+import { StoreService } from '../services/store.service';
 
 declare var require: any;
 const Boost = require('highcharts/modules/boost');
@@ -23,19 +24,15 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   endpoints = [];
 
-
-
-
-
-
   constructor(
     public dialog: MatDialog,
-    private customHttpService: CustomHttpService) { }
+    private customHttpService: CustomHttpService,
+    private storeService: StoreService) { }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(EndpointDialogComponent, {
       width: '400px',
-      disableClose : true
+      disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -56,6 +53,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   deleteEndPoints(id) {
     this.customHttpService.deleteEndpoint(id).subscribe(response => {
       this.getEndPoints();
+      this.storeService.openSuccessDialog('Endpoint Deleted Successfully');
     });
   }
   getapplicationsecuritybarchart() {

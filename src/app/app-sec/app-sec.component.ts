@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomHttpService } from '../services/custom-http.service';
 import { ExportAsService, ExportAsConfig } from 'ngx-export-as';
+import { MatDialog } from '@angular/material/dialog';
+import { EmailDialogComponent } from '../email-dialog/email-dialog.component';
 
 @Component({
   selector: 'app-app-sec',
@@ -20,7 +22,8 @@ export class AppSecComponent implements OnInit {
   pageSizeOptions: number[] = [10, 25, 50, 100];
   constructor(
     private customHttpService: CustomHttpService,
-    private exportAsService: ExportAsService) { }
+    private exportAsService: ExportAsService,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.customHttpService.getapplicationsecurity().subscribe(response => {
@@ -151,40 +154,40 @@ export class AppSecComponent implements OnInit {
     return searchAppSecurity;
   }
 
-  sendEmail(type: string) {
+
+  openEmailDialog(): void {
+
     let exportAsConfig: ExportAsConfig = null;
-    if (type === 'PDF') {
-      const marginArray = [5, 0, 10, 0];
-      exportAsConfig = {
-        type: 'pdf',
-        elementIdOrContent: this.getPrintData(),
-        options: {
-          jsPDF: { orientation: 'landscape' },
-          margin: marginArray,
-          pagebreak: { before: '.header' },
-        }
+    const marginArray = [10, 0, 10, 0];
+    exportAsConfig = {
+      type: 'pdf',
+      elementIdOrContent: this.getPrintData(),
+      options: {
+        margin: marginArray,
+        pagebreak: { before: '.header' },
+      }
+    };
+    this.exportAsService.get(exportAsConfig).subscribe((byteArray) => {
+      const arrayFile = byteArray.split('base64');
+      const file = arrayFile[1].substring(1, arrayFile[1].length);
+
+      const req =
+      {
+        fileArray: file,
+        fileName: 'application-security.pdf',
+        Subject: 'Application Security Search Report',
+        body: 'Please Find Attached Application Security Search Report.',
+        emailID: '',
+        loginName: ''
       };
-      this.exportAsService.get(exportAsConfig).subscribe((byteArray) => {
 
-
-        fetch(byteArray)
-          .then(res => res.blob())
-          .then(blob => {
-            // var fd = new FormData()
-            // fd.append('image', blob, 'filename')
-
-            // console.log(blob)
-            const req =
-            {
-              fileArray: blob,
-              fileName: 'asset-search.pdf'
-            };
-            this.customHttpService.sendEmail(req).subscribe(response => {
-
-            });
-          });
-
+      const dialogRef = this.dialog.open(EmailDialogComponent, {
+        width: '400px',
+        disableClose: true,
+        data: req
       });
-    }
+
+    });
+
   }
 }

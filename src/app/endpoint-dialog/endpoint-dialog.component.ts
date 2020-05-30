@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgForm } from '@angular/forms';
 import { CustomHttpService } from '../services/custom-http.service';
+import { StoreService } from '../services/store.service';
 
 @Component({
   selector: 'app-endpoint-dialog',
@@ -19,7 +20,8 @@ export class EndpointDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<EndpointDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private customHttpService: CustomHttpService) { }
+    private customHttpService: CustomHttpService,
+    private storeService : StoreService) { }
 
   ngOnInit(): void {
 
@@ -32,6 +34,7 @@ export class EndpointDialogComponent implements OnInit {
     if (form.valid) {
       this.customHttpService.postEndpoint(this.endpoint).subscribe(response => {
         this.dialogRef.close();
+        this.storeService.openSuccessDialog('Data Saved Successfully');
       });
     }
   }

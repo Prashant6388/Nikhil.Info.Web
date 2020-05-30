@@ -20,7 +20,7 @@ import { PtNetworkDevicesComponent } from './pt-network-devices/pt-network-devic
 import { AppSecComponent } from './app-sec/app-sec.component';
 import { UserAccessComponent } from './user-access/user-access.component';
 import { LocationStrategy, HashLocationStrategy, CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ExportAsModule } from 'ngx-export-as';
 import { MatMenuModule } from '@angular/material/menu';
@@ -31,6 +31,10 @@ import { EndpointDialogComponent } from './endpoint-dialog/endpoint-dialog.compo
 import { MatDialogModule } from '@angular/material/dialog';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { MatSelectModule } from '@angular/material/select';
+import { EmailDialogComponent } from './email-dialog/email-dialog.component';
+import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
+import { SuccessDialogComponent } from './success-dialog/success-dialog.component';
+import { CustomHttpInterceptor } from './http-interceptor/custom-http.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,8 +49,8 @@ import { MatSelectModule } from '@angular/material/select';
     PtNetworkDevicesComponent,
     AppSecComponent,
     UserAccessComponent,
-    EndpointDialogComponent,    
-    UserAccessFormComponent
+    EndpointDialogComponent,
+    UserAccessFormComponent, EmailDialogComponent, ErrorDialogComponent, SuccessDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -68,10 +72,15 @@ import { MatSelectModule } from '@angular/material/select';
     NgCircleProgressModule.forRoot({})
   ],
   entryComponents: [
-    EndpointDialogComponent, UserAccessFormComponent
+    EndpointDialogComponent,
+    UserAccessFormComponent,
+    EmailDialogComponent,
+    ErrorDialogComponent,
+    SuccessDialogComponent
   ],
   providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy }
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: HTTP_INTERCEPTORS, useClass: CustomHttpInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

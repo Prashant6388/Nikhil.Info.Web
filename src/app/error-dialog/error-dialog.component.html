@@ -1,0 +1,26 @@
+
+<div class="row">
+    <div class="col-lg-12">
+        <mat-card>
+            <mat-card-content>
+                <div class="text-center w-75 m-auto">
+                    <h4 class="text-dark-50 text-center mt-0">Error</h4>
+                </div>
+                <div>
+                    <div>
+                        <h5  class="m-2">
+                           Reason: {{data.reason}}
+                        </h5>
+                        <p>
+                            Status: {{data.status}}
+                        </p>
+                    </div>
+                </div>
+                <div mat-dialog-actions class="row form-group custom-gutters pb-0 text-right">
+                    <div class="col-md-12"><button type="button" mat-button class="btn btn-secondary w-20"
+                            (click)="cancel()">OK</button></div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

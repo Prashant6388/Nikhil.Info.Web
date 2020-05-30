@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CustomHttpService } from '../services/custom-http.service';
+import { StoreService } from '../services/store.service';
 
 @Component({
   selector: 'app-user-access-form',
@@ -19,7 +20,8 @@ export class UserAccessFormComponent implements OnInit {
   constructor(
     private customHttpService: CustomHttpService,
     public dialogRef: MatDialogRef<UserAccessFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private storeService : StoreService) {
     if (data) {
       this.user = data;
     }
@@ -35,6 +37,7 @@ export class UserAccessFormComponent implements OnInit {
     if (form.valid) {
       this.customHttpService.postUser(this.user).subscribe(response => {
         this.dialogRef.close();
+        this.storeService.openSuccessDialog('User Created Successfully');
       });
     }
   }

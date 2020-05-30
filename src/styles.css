@@ -276,7 +276,7 @@ select:-webkit-autofill:focus {
 } */
 
 /* Dark Mode */
-
+/* 
 body {
     background: #5c6166;
 }
@@ -316,5 +316,5 @@ body {
 
 .mat-form-field-appearance-legacy .mat-form-field-underline {
     background-color: orange;
-}
+} */
 
