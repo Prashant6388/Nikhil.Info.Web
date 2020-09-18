@@ -55,4 +55,14 @@ export class CustomHttpService {
   deleteUser(id) {
     return this.http.post<any>(environment.url + 'api/inventory/deleteuser/'+ id, null);
   }
+  getServers() {
+    return this.http.get<any>(environment.url + 'api/inventory/getservers');
+  }
+  postServer(request) {
+    return this.http.post<any>(environment.url + 'api/inventory/postserver', request);
+  }
+  deleteServer(iid) {
+    return this.http.delete<any>(environment.url + 'api/inventory/deleteserver',
+    {params : { id : iid} } );
+  }
 }

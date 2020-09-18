@@ -5,7 +5,17 @@
 </div>
 
 <div class="row my-3 custom-gutters">
-    <div class="col-md-10">
+    <div class="col-md-2">
+        <div class="epts">
+            <div class="input-group">
+                <select [(ngModel)]="searchApplication" class="form-control" name="searchApplication">
+                    <option value="All">All</option>
+                    <option [value]="item" *ngFor="let item of applications">{{item}}</option>                  
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
         <div class="epts">
             <div class="input-group">
                 <input type="text" class="form-control"
@@ -97,21 +107,21 @@
     <thead class="thead-light">
         <tr>
             <th scope="col" style="width: 13%;">Sr. No.</th>           
-            <th scope="col">Application</th>
-            <th scope="col">Vulnerability</th>
-            <th scope="col">Severity</th>
-            <th scope="col">Severity1</th>
-            <th scope="col">Status</th>
+            <th scope="col" *ngIf="isPrintArrayHas('application')">Application</th>
+            <th scope="col" *ngIf="isPrintArrayHas('vulnerability')">Vulnerability</th>
+            <th scope="col" *ngIf="isPrintArrayHas('severity')">Severity</th>
+            <th scope="col" *ngIf="isPrintArrayHas('severity1')">Severity1</th>
+            <th scope="col" *ngIf="isPrintArrayHas('status')">Status</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let item of getAppSecurityPrint(); let i= index">
             <th scope="row"> {{ i + 1}}</th>                            
-            <td>{{item.application}}</td>
-            <td>{{item.vulnerability}}</td>
-            <td>{{item.severity}}</td>
-            <td>{{item.severity1}}</td>
-            <td>{{item.status}}</td>
+            <td *ngIf="isPrintArrayHas('application')">{{item.application}}</td>
+            <td *ngIf="isPrintArrayHas('vulnerability')">{{item.vulnerability}}</td>
+            <td *ngIf="isPrintArrayHas('severity')">{{item.severity}}</td>
+            <td *ngIf="isPrintArrayHas('severity1')">{{item.severity1}}</td>
+            <td *ngIf="isPrintArrayHas('status')">{{item.status}}</td>
         </tr>
     </tbody>
 </table>

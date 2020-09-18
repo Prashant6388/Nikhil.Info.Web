@@ -34,15 +34,15 @@
                 {{storeService.loggedInUser.name}}
             </button>
             <mat-menu #menu="matMenu">
-                <button mat-menu-item>
+                <!-- <button mat-menu-item>
                     <mat-icon>more_vert</mat-icon>
                     <span>Action</span>
                 </button>
                 <button mat-menu-item>
                     <mat-icon>settings</mat-icon>
                     <span>Settings</span>
-                </button>
-                <button mat-menu-item>
+                </button> -->
+                <button mat-menu-item (click)="logOut()">
                     <mat-icon>settings_power</mat-icon>
                     <span>Logout</span>
                 </button>

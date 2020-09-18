@@ -126,27 +126,27 @@
     <thead class="thead-light">
         <tr>
             <th scope="col" style="width:6%">Sr. No.</th>
-            <th scope="col">Logged In User</th>
-            <th scope="col">Computer Name</th>
-            <th scope="col">Operating System</th>
-            <th scope="col">IP Address</th>
-            <th scope="col">Software Installed</th>
-            <th scope="col">Software Version</th>
-            <th scope="col">Patches Installed</th>
-            <th scope="col">User Account Details</th>
+            <th scope="col" *ngIf="isPrintArrayHas('loggedInUser')">Logged In User</th>
+            <th scope="col" *ngIf="isPrintArrayHas('computerName')">Computer Name</th>
+            <th scope="col" *ngIf="isPrintArrayHas('operatingSystem')">Operating System</th>
+            <th scope="col" *ngIf="isPrintArrayHas('ipAddress')">IP Address</th>
+            <th scope="col" *ngIf="isPrintArrayHas('softwareInstalled')">Software Installed</th>
+            <th scope="col" *ngIf="isPrintArrayHas('softwareVersion')">Software Version</th>
+            <th scope="col" *ngIf="isPrintArrayHas('patchesInstalled')">Patches Installed</th>
+            <th scope="col" *ngIf="isPrintArrayHas('userAccountDetails')">User Account Details</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let item of getAssetSearchPrint(); let i= index">
             <th scope="row">{{ i + 1}}</th>
-            <td>{{item.loggedInUser}}</td>
-            <td>{{item.computerName}}</td>
-            <td>{{item.operatingSystem}}</td>
-            <td>{{item.ipAddress}}</td>
-            <td>{{item.softwareInstalled}}</td>
-            <td>{{item.softwareVersion}}</td>
-            <td>{{item.patchesInstalled}}</td>
-            <td>{{item.userAccountDetails}}</td>
+            <td *ngIf="isPrintArrayHas('loggedInUser')">{{item.loggedInUser}}</td>
+            <td *ngIf="isPrintArrayHas('computerName')">{{item.computerName}}</td>
+            <td *ngIf="isPrintArrayHas('operatingSystem')">{{item.operatingSystem}}</td>
+            <td *ngIf="isPrintArrayHas('ipAddress')">{{item.ipAddress}}</td>
+            <td *ngIf="isPrintArrayHas('softwareInstalled')">{{item.softwareInstalled}}</td>
+            <td *ngIf="isPrintArrayHas('softwareVersion')">{{item.softwareVersion}}</td>
+            <td *ngIf="isPrintArrayHas('patchesInstalled')">{{item.patchesInstalled}}</td>
+            <td *ngIf="isPrintArrayHas('userAccountDetails')">{{item.userAccountDetails}}</td>
         </tr>
     </tbody>
 </table>

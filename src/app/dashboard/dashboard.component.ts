@@ -4,6 +4,7 @@ import { EndpointDialogComponent } from '../endpoint-dialog/endpoint-dialog.comp
 import { CustomHttpService } from '../services/custom-http.service';
 import * as Highcharts from 'highcharts';
 import { StoreService } from '../services/store.service';
+import { ServerDialogComponent } from '../server-dialog/server-dialog.component';
 
 declare var require: any;
 const Boost = require('highcharts/modules/boost');
@@ -23,7 +24,7 @@ noData(Highcharts);
 export class DashboardComponent implements OnInit, AfterViewInit {
 
   endpoints = [];
-
+  servers = [];
   constructor(
     public dialog: MatDialog,
     private customHttpService: CustomHttpService,
@@ -42,7 +43,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.getEndPoints();
-
+    //this.getServers();
   }
 
   getEndPoints() {
@@ -66,7 +67,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         },
         xAxis: {
           labels: {
-            format: '<div style="text-align:center;font-size:7px">Critical &nbsp; High &nbsp; Medium &nbsp; Low<br /><br /><div style="text-align:center;font-size:10px">{value}</div></div>',
+            format: '<div style="text-align:center;font-size:7px">Critical  &nbsp; &nbsp; &nbsp; &nbsp; High  &nbsp; &nbsp; &nbsp; &nbsp; Medium &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; Low<br /><br /><div style="text-align:center;font-size:10px">{value}</div></div>',
             useHTML: true
           },
           tickInterval: 1,
@@ -103,6 +104,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
           labelFormatter() {
             return this.userOptions.stack + ' - ' + this.name;
           }
+        },
+        credits:
+        {
+          enabled: false
         },
         tooltip: {
           formatter() {
@@ -143,7 +148,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         },
         xAxis: {
           labels: {
-            format: '<div style="text-align:center;font-size:7px">Critical &nbsp; High &nbsp; Medium &nbsp; Low<br /><br /><div style="text-align:center;font-size:10px">{value}</div></div>',
+            format: '<div style="text-align:center;font-size:7px">Critical  &nbsp; &nbsp; &nbsp; &nbsp; High  &nbsp; &nbsp; &nbsp; &nbsp; Medium &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; Low<br /><br /><div style="text-align:center;font-size:10px">{value}</div></div>',
             useHTML: true
           },
           tickInterval: 1,
@@ -181,6 +186,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             return this.userOptions.stack + ' - ' + this.name;
           }
         },
+        credits:
+        {
+          enabled: false
+        },
         tooltip: {
           formatter() {
             return '<b>' + this.x + '</b><br/>' +
@@ -215,7 +224,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         },
         xAxis: {
           labels: {
-            format: '<div style="text-align:center;font-size:7px">Critical &nbsp; High &nbsp; Medium &nbsp; Low<br /><br /><div style="text-align:center;font-size:10px">{value}</div></div>',
+            format: '<div style="text-align:center;font-size:7px">Critical  &nbsp; &nbsp; &nbsp; &nbsp; High  &nbsp; &nbsp; &nbsp; &nbsp; Medium &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; Low<br /><br /><div style="text-align:center;font-size:10px">{value}</div></div>',
             useHTML: true
           },
           tickInterval: 1,
@@ -253,6 +262,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             return this.userOptions.stack + ' - ' + this.name;
           }
         },
+        credits:
+        {
+          enabled: false
+        },
         tooltip: {
           formatter() {
             return '<b>' + this.x + '</b><br/>' +
@@ -274,6 +287,28 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         series: vaserverChartData.series
       };
       Highcharts.chart('VAServerContainer', options);
+    });
+  }
+
+  openServerDialog() {
+    const dialogRef = this.dialog.open(ServerDialogComponent, {
+      width: '400px',
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getEndPoints();
+    });
+  }
+  getServers() {
+    this.customHttpService.getServers().subscribe(response => {
+      this.servers = response;
+    });
+  }
+  deleteServer(id) {
+    this.customHttpService.deleteServer(id).subscribe(response => {
+      this.getServers();
+      this.storeService.openSuccessDialog('Server Deleted Successfully');
     });
   }
 }

@@ -100,25 +100,25 @@
     <thead class="thead-light">
         <tr>
             <th scope="col" style="width: 13%;">Sr. No.</th>
-            <th scope="col">Data Center</th>		
-            <th scope="col">Host Name</th>
-            <th scope="col">IP Address</th>
-            <th scope="col">Vulnerability</th>
-            <th scope="col">Severity</th>
-            <th scope="col">Severity1</th>
-            <th scope="col">Status</th>
+            <th scope="col" *ngIf="isPrintArrayHas('datacenter')">Data Center</th>		
+            <th scope="col" *ngIf="isPrintArrayHas('hostname')">Host Name</th>
+            <th scope="col" *ngIf="isPrintArrayHas('ipAddress')">IP Address</th>
+            <th scope="col" *ngIf="isPrintArrayHas('vulnerability')">Vulnerability</th>
+            <th scope="col" *ngIf="isPrintArrayHas('severity')">Severity</th>
+            <th scope="col" *ngIf="isPrintArrayHas('severity1')">Severity1</th>
+            <th scope="col" *ngIf="isPrintArrayHas('status')">Status</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let item of getVaServerPrint(); let i= index">
             <th scope="row"> {{ i + 1}}</th>
-            <td>{{item.datacenter}}</td>
-            <td>{{item.hostname}}</td>                            
-            <td>{{item.ipAddress}}</td>
-            <td>{{item.vulnerability}}</td>
-            <td>{{item.severity}}</td>
-            <td>{{item.severity1}}</td>
-            <td>{{item.status}}</td>
+            <td  *ngIf="isPrintArrayHas('datacenter')">{{item.datacenter}}</td>
+            <td  *ngIf="isPrintArrayHas('hostname')">{{item.hostname}}</td>                            
+            <td  *ngIf="isPrintArrayHas('ipAddress')">{{item.ipAddress}}</td>
+            <td  *ngIf="isPrintArrayHas('vulnerability')">{{item.vulnerability}}</td>
+            <td  *ngIf="isPrintArrayHas('severity')">{{item.severity}}</td>
+            <td  *ngIf="isPrintArrayHas('severity1')">{{item.severity1}}</td>
+            <td  *ngIf="isPrintArrayHas('status')">{{item.status}}</td>
         </tr>
     </tbody>
 </table>

@@ -35,6 +35,10 @@ import { EmailDialogComponent } from './email-dialog/email-dialog.component';
 import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 import { SuccessDialogComponent } from './success-dialog/success-dialog.component';
 import { CustomHttpInterceptor } from './http-interceptor/custom-http.interceptor';
+import { ServerDialogComponent } from './server-dialog/server-dialog.component';
+import { PrintColumnComponent } from './print-column/print-column.component';
+import { MatListModule } from '@angular/material/list';
+import { ServerPieChartComponent } from './server-pie-chart/server-pie-chart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +54,13 @@ import { CustomHttpInterceptor } from './http-interceptor/custom-http.intercepto
     AppSecComponent,
     UserAccessComponent,
     EndpointDialogComponent,
-    UserAccessFormComponent, EmailDialogComponent, ErrorDialogComponent, SuccessDialogComponent
+    UserAccessFormComponent,
+    EmailDialogComponent,
+    ErrorDialogComponent,
+    SuccessDialogComponent,
+    ServerDialogComponent,
+    PrintColumnComponent,
+    ServerPieChartComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +79,7 @@ import { CustomHttpInterceptor } from './http-interceptor/custom-http.intercepto
     MatTooltipModule,
     CommonModule,
     MatSelectModule,
+    MatListModule,
     NgCircleProgressModule.forRoot({})
   ],
   entryComponents: [
@@ -76,7 +87,8 @@ import { CustomHttpInterceptor } from './http-interceptor/custom-http.intercepto
     UserAccessFormComponent,
     EmailDialogComponent,
     ErrorDialogComponent,
-    SuccessDialogComponent
+    SuccessDialogComponent,
+    ServerDialogComponent
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
