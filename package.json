@@ -28,7 +28,7 @@
     "html2canvas": "^1.0.0-rc.5",
     "html2pdf.js": "^0.9.0",
     "jquery": "^3.4.1",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "ng-circle-progress": "^1.5.1",
     "ngx-export-as": "^1.4.2",
     "popper.js": "^1.14.3",
